@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Ball Poem — Comprehensive Notes (Class 10 NCERT)</title>
+  <style>
+    :root{
+      --bg:#FCFCFF;
+      --card:#FFFFFF;
+      --muted:#555;
+      --accent:#0B5FFF;
+      --pill:#F0F6FF;
+      --maxw:900px;
+      --pad:18px;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:#222;
+    }
+    body{
+      background:linear-gradient(180deg,#f6f8ff, #fff);
+      padding:30px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--card);
+      border-radius:12px;
+      box-shadow:0 8px 30px rgba(12,20,50,0.06);
+      padding:26px;
+    }
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .logo{
+      width:64px;height:64px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent),#7aa7ff);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      font-size:18px;box-shadow:0 6px 18px rgba(11,95,255,0.12);
+    }
+    h1{font-size:26px;margin:0}
+    .meta{font-size:13px;color:var(--muted);margin-top:6px}
+    section{margin-top:18px}
+    h2{font-size:18px;margin:10px 0 8px;color:var(--accent)}
+    p{line-height:1.55;margin:8px 0;color:#222}
+    ul{margin:8px 0 8px 20px}
+    .note{background:var(--pill);padding:10px;border-radius:8px;color:var(--muted);font-size:14px}
+    .important{border-left:4px solid #ffd54d;background:#fff8e1;padding:10px;border-radius:6px}
+    .qa{display:grid;gap:10px}
+    .card{padding:14px;border-radius:10px;border:1px solid #f0f0f6;background:#fff}
+    code{background:#f6f7fb;padding:2px 6px;border-radius:6px;font-size:13px}
+    .footer{margin-top:20px;font-size:13px;color:var(--muted)}
+    @media print{
+      body{padding:0;background:#fff}
+      .container{box-shadow:none;border-radius:0}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">CBSE</div>
+      <div>
+        <h1>The Ball Poem — Comprehensive Notes</h1>
+        <div class="meta">Poet: John Berryman | Book: First Flight (Class 10 NCERT) — concise summary, themes, devices, important lines & exam Q&A</div>
+      </div>
+    </header>
+
+    <section id="about-poet">
+      <h2>About the Poet</h2>
+      <p><strong>John Berryman (1914–1972)</strong> was an American poet noted for his emotionally intense and reflective poetry. He often wrote about loss, guilt, and the human condition. <em>The Ball Poem</em> is short but rich in meaning — it uses a child's lost ball to explore loss, responsibility, and growing up.</p>
+    </section>
+
+    <section id="summary">
+      <h2>Summary</h2>
+      <p>The poem describes a boy who loses his ball by the sea or harbor. The ball bounces away and falls into the water; the boy cannot retrieve it. The poet watches and reflects: this accidental loss is the boy’s first real encounter with disappointment and loss. No one can give him the exact ball back — an experience, once gone, cannot be replaced by money or another object. The incident teaches the child about loss and forces him to accept the reality of the world.</p>
+      <div class="note">
+        <strong>Key point:</strong> The ball is more than an object — it symbolizes childhood innocence, attachment, and the inevitability of loss.
+      </div>
+    </section>
+
+    <section id="themes">
+      <h2>Main Themes</h2>
+      <ul>
+        <li><strong>Loss and grief:</strong> The poem focuses on the first experience of loss and the emotional effect it has on the child.</li>
+        <li><strong>Growing up / maturity:</strong> Loss acts as a lesson that accelerates the boy's psychological growth.</li>
+        <li><strong>Value of experience over possession:</strong> Money can buy replacements but not the meaning/memory that was attached to the lost object.</li>
+        <li><strong>Responsibility and acceptance:</strong> Learning to accept the world as it is — where losing things is part of life.</li>
+      </ul>
+    </section>
+
+    <section id="poetic-devices">
+      <h2>Poetic Devices & Techniques</h2>
+      <ul>
+        <li><strong>Symbolism:</strong> The ball symbolizes childhood, innocence, and personal attachment.</li>
+        <li><strong>Imagery:</strong> Visual images (ball bouncing, water, harbor) create the scene and mood.</li>
+        <li><strong>Personification:</strong> At times the ball and the loss are treated as events with emotional weight.</li>
+        <li><strong>Enjambment:</strong> Lines flow into one another to maintain reflective tone.</li>
+        <li><strong>Simple diction:</strong> Plain language gives emotional clarity and universality to the message.</li>
+      </ul>
+    </section>
+
+    <section id="important-lines">
+      <h2>Important Lines & Meanings</h2>
+      <div class="card">
+        <p><strong>"What is the boy now, who has lost his ball, / What, what is he to do?"</strong></p>
+        <p class="meta">— Shows immediate shock, helplessness and the poet's concern. The repetition "What, what" emphasizes confusion and pain.</p>
+
+        <p><strong>"He is a child: yet; but soon his father will buy / Another, and a crowd will laugh and point the way."</strong></p>
+        <p class="meta">— Suggests that people may trivialize the loss; the emotional value cannot be replaced by buying another ball.</p>
+
+        <p><strong>"Money is external. It can buy a new ball or a story." </strong></p>
+        <p class="meta">— Money buys objects but not the exactness of the lost experience or memory.</p>
+
+        <p><strong>"Let him be left, nor speak of him as lost."</strong></p>
+        <p class="meta">— The poet asks us to let the boy grieve privately; respect the integrity of his loss and learning.</p>
+      </div>
+    </section>
+
+    <section id="message-values">
+      <h2>Message & Values</h2>
+      <ul>
+        <li>Loss is universal — every person will experience it.</li>
+        <li>Emotional attachments cannot be replaced by material substitutes.</li>
+        <li>Accepting loss is part of growing up; it builds maturity and responsibility.</li>
+        <li>Kindness matters: allow someone time to grieve rather than dismissing their feelings.</li>
+      </ul>
+    </section>
+
+    <section id="exam-qa">
+      <h2>Exam-style Q&A (Short & Long Answers)</h2>
+
+      <div class="qa">
+        <div class="card">
+          <strong>Q1. What is the theme of <em>The Ball Poem</em>?</strong>
+          <p><em>Ans:</em> The poem deals with loss and the process of growing up. It shows how the boy’s loss of the ball teaches him about sorrow, the value of experience, and acceptance of reality.</p>
+        </div>
+
+        <div class="card">
+          <strong>Q2. Why does the poet say 'Money is external'?</strong>
+          <p><em>Ans:</em> The poet means money can buy a new ball but cannot restore the exact feeling, memory or attachment the lost ball had. Emotional experiences are not replaceable by money.</p>
+        </div>
+
+        <div class="card">
+          <strong>Q3. How does the poet view the reaction of others?</strong>
+          <p><em>Ans:</em> The poet suggests others may trivialize the loss and offer substitutes or jokes. But such reactions miss the emotional lesson — the poet urges that the boy’s grief should be respected.</p>
+        </div>
+
+        <div class="card">
+          <strong>Q4. Write a long-answer (100–150 words): Explain how loss in the poem leads to maturity.</strong>
+          <p><em>Ans:</em> The loss of the ball is a small incident but symbolically significant. It is the boy’s first confrontation with irreversible loss. The shock and helplessness force him to experience grief, a feeling previously unknown. Through this event he learns that not everything can be retrieved or replaced, and that possessions often carry emotional weight beyond their monetary value. The poet suggests that such moments teach responsibility and acceptance: the child must come to terms with reality. This inner change—learning to cope and move forward—marks the beginning of maturity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quick-revision">
+      <h2>Quick Revision (Bullet Points)</h2>
+      <ul>
+        <li>Setting: near water/harbor where ball is lost.</li>
+        <li>Incident: ball bounces into water and is lost.</li>
+        <li>Reaction: boy feels helpless; poet reflects on loss and its meaning.</li>
+        <li>Lesson: loss cannot be replaced; acceptance builds maturity.</li>
+      </ul>
+    </section>
+
+    <section id="tips">
+      <h2>Tips for Students</h2>
+      <ul>
+        <li>Remember the ball as a symbol of childhood and attachment.</li>
+        <li>For answers, discuss both the literal event and its symbolic meaning.</li>
+        <li>Use lines from the poem (short quotes) to support answers.</li>
+        <li>Explain the teacher/poet’s sympathetic viewpoint — he watches and reflects rather than simply narrates.</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      <p><strong>Prepared for:</strong> Class 10 CBSE (NCERT) — <em>The Ball Poem</em> | Use this file for revision, classroom handouts, or quick printing.</p>
+    </div>
+  </div>
+</body>
+</html>
