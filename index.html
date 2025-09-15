@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes - Chess Anurag Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #2d3748;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6b7280, #4a5568);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .controls {
+            max-width: 90%;
+            margin: 1.5rem auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px 0 0 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: #4a90e2;
+        }
+
+        .search-container button {
+            padding: 0.75rem 1rem;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #357abd;
+        }
+
+        .controls select {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: white;
+            outline: none;
+            min-width: 150px;
+            transition: border-color 0.3s;
+        }
+
+        .controls select:focus {
+            border-color: #4a90e2;
+        }
+
+        .notes-list {
+            max-width: 90%;
+            margin: 0 auto 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+        }
+
+        .notes-list ul {
+            list-style: none;
+        }
+
+        .notes-list details {
+            margin-bottom: 0.5rem;
+        }
+
+        .notes-list summary {
+            cursor: pointer;
+            padding: 0.75rem;
+            font-weight: 600;
+            color: #2d3748;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            font-size: clamp(0.95rem, 3vw, 1rem);
+        }
+
+        .notes-list summary:hover {
+            background-color: #f1f5f9;
+        }
+
+        .notes-list ul ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .notes-list a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        .notes-list a:hover {
+            color: #357abd;
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 1rem;
+            background: #4a5568;
+            color: white;
+            width: 100%;
+            text-align: center;
+            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+        }
+
+        @media (max-width: 600px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .controls select {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+</head>
+<body>
+    <header>
+        <h1>Study Notes Repository</h1>
+        <p>Explore organized notes for all classes and subjects</p>
+    </header>
+
+    <div class="controls">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search notes by title, class, or subject...">
+            <button onclick="searchNotes()">Search</button>
+        </div>
+        <select id="sortSelect" onchange="sortNotes()">
+            <option value="">Sort by...</option>
+            <option value="class">Class</option>
+            <option value="subject">Subject</option>
+            <option value="title">Title</option>
+        </select>
+    </div>
+
+    <div class="notes-list" id="notesList"></div>
+
+    <footer>
+        Created by Chess Anurag Academy
+    </footer>
+
+    <script>
+        // Sample notes data - can be extended by adding new entries
+        let notes = [
+            { class: '10', subject: 'Mathematics', title: 'Algebra Basics', link: 'notes/math10_algebra.html' },
+            { class: '10', subject: 'Science', title: 'Physics Introduction', link: 'notes/science10_physics.html' },
+            { class: '12', subject: 'Biology', title: 'Human Anatomy', link: 'notes/bio12_anatomy.html' },
+            { class: '11', subject: 'Chemistry', title: 'Organic Compounds', link: 'notes/chem11_organic.html' },
+            { class: '9', subject: 'History', title: 'Ancient Civilizations', link: 'notes/history9_ancient.html' },
+        ];
+
+        let currentNotes = notes;
+
+        // Render notes as a tree
+        function renderNotes(filteredNotes, sortBy) {
+            let classMap = new Map();
+            filteredNotes.forEach(note => {
+                if (!classMap.has(note.class)) {
+                    classMap.set(note.class, new Map());
+                }
+                let subMap = classMap.get(note.class);
+                if (!subMap.has(note.subject)) {
+                    subMap.set(note.subject, []);
+                }
+                subMap.get(note.subject).push(note);
+            });
+
+            // Apply sorting
+            if (sortBy === 'class') {
+                classMap = new Map([...classMap.entries()].sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true })));
+            } else if (sortBy === 'subject') {
+                for (let [cls, subs] of classMap) {
+                    classMap.set(cls, new Map([...subs.entries()].sort((a, b) => a[0].localeCompare(b[0]))));
+                }
+            } else if (sortBy === 'title') {
+                for (let [cls, subs] of classMap) {
+                    for (let [sub, nts] of subs) {
+                        subs.set(sub, nts.sort((a, b) => a.title.localeCompare(b.title)));
+                    }
+                }
+            }
+
+            // Render tree
+            const list = document.getElementById('notesList');
+            list.innerHTML = '';
+            const rootUl = document.createElement('ul');
+            for (let [cls, subs] of classMap) {
+                const classLi = document.createElement('li');
+                const classDetails = document.createElement('details');
+                classDetails.open = true; // Open by default for better UX
+                const classSummary = document.createElement('summary');
+                classSummary.textContent = `Class ${cls}`;
+                classDetails.appendChild(classSummary);
+                const subUl = document.createElement('ul');
+                for (let [sub, nts] of subs) {
+                    const subLi = document.createElement('li');
+                    const subDetails = document.createElement('details');
+                    subDetails.open = true;
+                    const subSummary = document.createElement('summary');
+                    subSummary.textContent = sub;
+                    subDetails.appendChild(subSummary);
+                    const noteUl = document.createElement('ul');
+                    nts.forEach(note => {
+                        const noteLi = document.createElement('li');
+                        noteLi.innerHTML = `<a href="${note.link}" target="_blank">${note.title}</a>`;
+                        noteUl.appendChild(noteLi);
+                    });
+                    subDetails.appendChild(noteUl);
+                    subLi.appendChild(subDetails);
+                    subUl.appendChild(subLi);
+                }
+                classDetails.appendChild(subUl);
+                classLi.appendChild(classDetails);
+                rootUl.appendChild(classLi);
+            }
+            list.appendChild(rootUl);
+        }
+
+        // Initial render
+        renderNotes(notes, '');
+
+        // Search function
+        function searchNotes() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            currentNotes = notes.filter(note => 
+                note.title.toLowerCase().includes(query) ||
+                note.class.toLowerCase().includes(query) ||
+                note.subject.toLowerCase().includes(query)
+            );
+            const sortBy = document.getElementById('sortSelect').value;
+            renderNotes(currentNotes, sortBy);
+        }
+
+        // Sort function
+        function sortNotes() {
+            const sortBy = document.getElementById('sortSelect').value;
+            renderNotes(currentNotes, sortBy);
+        }
+    </script>
+</body>
+</html>
