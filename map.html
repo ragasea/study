@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Generated Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        #sidebar {
+            width: 250px;
+            padding: 10px;
+            border-right: 1px solid #ddd;
+        }
+        #content {
+            flex-grow: 1;
+        }
+        #nav-list a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        #nav-list a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <aside id="sidebar">
+        <h2>Table of Contents</h2>
+        <nav>
+            <ul id="nav-list">
+                </ul>
+        </nav>
+    </aside>
+
+    <main id="content">
+        <h1>My Awesome Document</h1>
+        
+        <section id="section1">
+            <h2>Introduction</h2>
+            <p>This is the first section of the document. It provides a general overview of the content to follow. It's a great way to introduce the reader to the main topics and themes. </p>
+        </section>
+
+        <section id="section2">
+            <h2>Getting Started</h2>
+            <p>This section is all about getting started. Here you'll find step-by-step instructions and important information to help you begin your journey with our amazing product or service.</p>
+            <h3>Basic Setup</h3>
+            <p>Here are the initial steps for setting up everything. Follow these instructions carefully to ensure a smooth start.</p>
+            <h3>Configuration</h3>
+            <p>Once the basic setup is done, this part covers the various configuration options available to you.</p>
+        </section>
+        
+        <section id="section3">
+            <h2>Advanced Topics</h2>
+            <p>For more experienced users, this section delves into advanced features and concepts. It assumes you are familiar with the content in the previous sections.</p>
+            <h3>Troubleshooting</h3>
+            <p>Having issues? This section provides solutions to common problems and a list of frequently asked questions to get you back on track.</p>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headings = document.querySelectorAll('h2, h3');
+            const navList = document.getElementById('nav-list');
+            
+            headings.forEach((heading, index) => {
+                // Create a unique ID for each heading if it doesn't have one
+                if (!heading.id) {
+                    heading.id = 'section-' + (index + 1);
+                }
+                
+                // Create the navigation list item
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                
+                // Add a class to style sub-headings
+                if (heading.tagName === 'H3') {
+                    listItem.style.paddingLeft = '20px'; // Indent sub-headings
+                }
+                
+                listItem.appendChild(link);
+                navList.appendChild(listItem);
+            });
+        });
+    </script>
+
+</body>
+</html>
