@@ -1,0 +1,221 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Determiners in English Grammar — Class 10 (CBSE/NCERT)</title>
+  <style>
+    :root{
+      --bg:#f7fbff; --card:#ffffff; --muted:#6b7280; --accent:#0b63d6;
+      --accent-2:#0ea5a7; --accent-3:#ef4444; --radius:12px; --glass: rgba(255,255,255,0.6);
+      --shadow: 0 6px 18px rgba(16,24,40,0.08);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    html,body{height:100%; margin:0; background:linear-gradient(180deg,var(--bg),#eef7ff); color:#0f172a}
+    .wrap{max-width:980px;margin:36px auto;padding:22px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    h1{font-size:1.6rem;margin:0;color:var(--accent)}
+    .meta{color:var(--muted);font-size:0.95rem}.toolbar{display:flex;gap:8px;align-items:center}
+.icon-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:var(--card);box-shadow:var(--shadow);cursor:pointer;border:1px solid rgba(15,23,42,0.05);font-size:0.95rem}
+.icon-btn svg{width:18px;height:18px;display:block}
+
+main{margin-top:18px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+
+/* card / details styling */
+details{background:linear-gradient(180deg,var(--card),#fbfcff);border-radius:12px;padding:14px;margin:10px 0;box-shadow:var(--shadow);border:1px solid rgba(11,99,214,0.04)}
+summary{list-style:none;display:flex;align-items:center;gap:10px;cursor:pointer;outline:none}
+summary::-webkit-details-marker{display:none}
+.summary-title{display:flex;flex-direction:column}
+.summary-title h2{margin:0;font-size:1.05rem}
+.summary-title span{font-size:0.85rem;color:var(--muted)}
+
+.section-body{margin-top:12px;color:#0b1220;line-height:1.55}
+.section-body p{margin:8px 0}
+.bullets{margin:6px 0 0 18px}
+
+/* color accents per section */
+details[data-color="blue"]{border-left:6px solid var(--accent)}
+details[data-color="teal"]{border-left:6px solid var(--accent-2)}
+details[data-color="red"]{border-left:6px solid var(--accent-3)}
+details[data-color="gold"]{border-left:6px solid #f59e0b}
+
+/* small helper styles */
+code{background:#f1f5f9;padding:2px 6px;border-radius:6px;font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace}
+.example{background:linear-gradient(180deg,#fbfbff,#ffffff);padding:10px;border-radius:8px;border:1px dashed rgba(11,99,214,0.06);margin-top:8px}
+
+footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
+
+/* responsive */
+@media (max-width:640px){.wrap{padding:16px} .icon-btn{padding:8px}}
+
+/* print: hide controls */
+@media print{.toolbar,.controls,header .meta{display:none} body{background:white} details{box-shadow:none;border:none}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Determiners in English Grammar</h1>
+        <div class="meta">Concise Class 10 (CBSE/NCERT) notes — collapsible sections for quick revision</div>
+      </div><div class="toolbar">
+    <button class="icon-btn" id="expandAll" title="Expand all sections">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9l7-7 7 7"/></svg>
+      Expand all
+    </button>
+
+    <button class="icon-btn" id="collapseAll" title="Collapse all sections">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V2M5 15l7 7 7-7"/></svg>
+      Collapse all
+    </button>
+
+    <button class="icon-btn" id="printBtn" title="Print this page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 22h12V14H6v8zM6 18h12"/></svg>
+      Print
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- Definition -->
+  <details data-color="blue" open>
+    <summary>
+      <div class="summary-title">
+        <h2>✨ Definition</h2>
+        <span>What is a determiner?</span>
+      </div>
+    </summary>
+    <div class="section-body">
+      <p>A <strong>determiner</strong> is a word placed <strong>before a noun</strong> to show <strong>how much</strong>, <strong>how many</strong>, <strong>whose</strong>, <strong>which</strong>, or <strong>what kind</strong> of noun we mean. Determiners <em>specify, identify, or quantify</em> nouns.</p>
+      <p><strong>Example:</strong> <em>This</em> book, <em>three</em> pens, <em>the</em> moon.</p>
+    </div>
+  </details>
+
+  <!-- Types -->
+  <details data-color="teal">
+    <summary>
+      <div class="summary-title">
+        <h2>🔹 Types of Determiners</h2>
+        <span>Major categories with examples</span>
+      </div>
+    </summary>
+    <div class="section-body">
+      <h3>1. Articles</h3>
+      <p><strong>a</strong>, <strong>an</strong>, <strong>the</strong></p>
+      <ul class="bullets">
+        <li><strong>a</strong> — before consonant sounds (a boy, a car)</li>
+        <li><strong>an</strong> — before vowel sounds (an apple, an hour)</li>
+        <li><strong>the</strong> — specific or unique items (the sun, the Taj Mahal)</li>
+      </ul>
+
+      <h3>2. Demonstratives</h3>
+      <p><strong>this, that, these, those</strong> — point to specific nouns.</p>
+
+      <h3>3. Possessives</h3>
+      <p><strong>my, your, his, her, its, our, their, whose</strong> — show ownership.</p>
+
+      <h3>4. Quantifiers</h3>
+      <p><strong>some, any, much, many, few, little, several, all, both, enough</strong> — indicate quantity or amount.</p>
+
+      <h3>5. Numbers (Cardinals & Ordinals)</h3>
+      <p>Cardinals: <strong>one, two, three…</strong> • Ordinals: <strong>first, second, third…</strong></p>
+
+      <h3>6. Distributives</h3>
+      <p><strong>each, every, either, neither</strong> — used to talk about individuals in a group.</p>
+
+      <h3>7. Interrogatives</h3>
+      <p><strong>which, what, whose</strong> — used to ask questions.</p>
+
+      <h3>8. Definite Quantifiers</h3>
+      <p><strong>all, both, half, double</strong></p>
+
+      <h3>9. Relative Determiners</h3>
+      <p><strong>whose, which</strong> — used in relative clauses.</p>
+    </div>
+  </details>
+
+  <!-- Important Points -->
+  <details data-color="gold">
+    <summary>
+      <div class="summary-title">
+        <h2>🔸 Important Points</h2>
+        <span>Key rules and exam-friendly tips</span>
+      </div>
+    </summary>
+    <div class="section-body">
+      <ul class="bullets">
+        <li>A determiner always comes <strong>before a noun</strong> (or before adjectives that modify that noun): <em>the beautiful garden</em>.</li>
+        <li>Determiners are <strong>different from adjectives</strong> — adjectives describe quality; determiners limit or identify.</li>
+        <li>Every <strong>singular countable noun</strong> must have a determiner: <em>I saw a boy.</em> (not *I saw boy*).</li>
+        <li>Both <code>a/an</code> are chosen by sound, not by the letter: <em>an hour</em> (vowel sound), <em>a university</em> (consonant sound 'y').</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- Examples -->
+  <details data-color="red">
+    <summary>
+      <div class="summary-title">
+        <h2>📚 Examples in Sentences</h2>
+        <span>Short and clear examples for practice</span>
+      </div>
+    </summary>
+    <div class="section-body">
+      <p><strong>This</strong> house is mine. (demonstrative)</p>
+      <p>She bought <strong>two</strong> dresses. (number)</p>
+      <p><strong>My</strong> father is a teacher. (possessive)</p>
+      <p>There isn’t <strong>much</strong> water left. (quantifier)</p>
+      <p><strong>Every</strong> student must submit homework. (distributive)</p>
+      <p><strong>Whose</strong> bag is this? (interrogative)</p>
+      <p>He is <strong>the</strong> best player in the team. (article)</p>
+
+      <div class="example">
+        <strong>Example note:</strong> To identify a determiner, ask <em>Which? Whose? How many? How much?</em> If the word answers one of those, it is a determiner.
+      </div>
+    </div>
+  </details>
+
+  <!-- Quick tip -->
+  <details data-color="blue">
+    <summary>
+      <div class="summary-title">
+        <h2>📝 Quick Tip for Exams</h2>
+        <span>One-line revision</span>
+      </div>
+    </summary>
+    <div class="section-body">
+      <p>If a sentence has a singular countable noun, ensure there's a determiner (a/an/the/my/this/every/etc.). Use the question words <em>Which? Whose? How many? How much?</em> to spot determiners quickly.</p>
+    </div>
+  </details>
+
+</main>
+
+<footer>
+  <div>Made for Class 10 CBSE/NCERT revision • Collapsible sections & print-ready</div>
+</footer>
+
+  </div>  <script>
+    // buttons
+    const expandAll = document.getElementById('expandAll');
+    const collapseAll = document.getElementById('collapseAll');
+    const printBtn = document.getElementById('printBtn');
+
+    expandAll.addEventListener('click', ()=>{
+      document.querySelectorAll('details').forEach(d=> d.open = true);
+    });
+    collapseAll.addEventListener('click', ()=>{
+      document.querySelectorAll('details').forEach(d=> d.open = false);
+    });
+    printBtn.addEventListener('click', ()=> window.print());
+
+    // keyboard accessibility for summary toggles
+    document.querySelectorAll('summary').forEach(s=>{
+      s.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); const d = s.parentElement; d.open = !d.open; }
+      })
+    });
+  </script></body>
+</html>
