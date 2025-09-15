@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Midnight Visitor — Notes (Collapsible)</title>
+  <style>
+    :root{
+      --bg:#f7f9fb;
+      --card:#fff;
+      --accent:#224;
+      --muted:#555;
+      --shadow: 0 6px 18px rgba(17,24,39,0.07);
+    }
+    html,body{height:100%}
+    body{
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#eef4f9 40%);
+      color:#111;
+      padding:28px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    header{
+      margin-bottom:18px;
+      text-align:left;
+    }
+    h1{
+      margin:0 0 6px 0;
+      font-size:1.6rem;
+      color:var(--accent);
+    }
+    .meta{
+      color:var(--muted);
+      margin-bottom:14px;
+      font-size:0.95rem;
+    }
+
+    .controls{
+      display:flex;
+      gap:8px;
+      margin-bottom:12px;
+      align-items:center;
+    }
+    button{
+      background:#fff;
+      border:1px solid #d0d7de;
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      font-weight:600;
+    }
+    button:active{transform:translateY(1px)}
+    .notes{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    details{
+      margin:10px 0;
+      padding:10px 12px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(34,36,68,0.02), rgba(34,36,68,0.01));
+      border:1px solid rgba(34,36,68,0.06);
+    }
+    summary{
+      font-weight:700;
+      cursor:pointer;
+      outline:none;
+      list-style:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .summary-title{
+      font-size:1rem;
+      color:var(--accent);
+    }
+    .summary-hint{
+      font-size:0.9rem;
+      color:var(--muted);
+      font-weight:600;
+    }
+    details[open] { box-shadow: 0 12px 30px rgba(17,24,39,0.06) }
+
+    .section-content{ margin-top:8px; padding-left:6px; color:#1b1b1b }
+    .characters-list li{ margin:6px 0 }
+    .themes-list li{ margin:6px 0 }
+    .word-list dt{ font-weight:700; margin-top:8px }
+    blockquote{
+      margin:10px 0;
+      padding:10px 14px;
+      border-left:4px solid rgba(34,36,68,0.12);
+      background:#fbfcff;
+      color:#222;
+      border-radius:6px;
+    }
+
+    footer{
+      margin-top:16px;
+      font-size:0.9rem;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    /* small screens */
+    @media (max-width:560px){
+      body{padding:16px}
+      .controls{flex-direction:column; align-items:stretch}
+      button{width:100%}
+      header{text-align:center}
+      footer{text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>The Midnight Visitor — Comprehensive Notes</h1>
+      <div class="meta">By <strong>Robert Arthur</strong> — formatted for Class 10 CBSE NCERT. Sections are collapsible/expandable.</div>
+    </header>
+
+    <div class="controls" role="toolbar" aria-label="Expand or collapse all sections">
+      <button id="expandAll" type="button" title="Open all sections">Expand All</button>
+      <button id="collapseAll" type="button" title="Close all sections">Collapse All</button>
+      <div style="flex:1"></div>
+      <button id="printBtn" type="button" title="Print this page">Print</button>
+    </div>
+
+    <main class="notes" id="notesRoot" role="main">
+      <details open>
+        <summary>
+          <span class="summary-title">About the Author</span>
+          <span class="summary-hint">Who wrote it?</span>
+        </summary>
+        <div class="section-content">
+          <p><strong>Robert Arthur</strong> (1909–1969) was an American editor and author. Famous for mystery and detective stories, he created the popular series <em>The Three Investigators</em>. His stories are known for <strong>suspense, witty dialogue,</strong> and <strong>unexpected twists</strong>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Characters</span>
+          <span class="summary-hint">Who appears in the story?</span>
+        </summary>
+        <div class="section-content">
+          <ul class="characters-list">
+            <li><strong>Ausable</strong> — A secret agent; fat, ordinary-looking, with an American accent. Lives in a small French hotel. Extremely clever and quick-witted.</li>
+            <li><strong>Fowler</strong> — A young writer who wants adventure and is initially disappointed by Ausable's ordinary appearance.</li>
+            <li><strong>Max</strong> — A rival spy; tall and thin with a fox-like face. Overconfident and gullible; confronts Ausable and tries to steal secret papers.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Summary</span>
+          <span class="summary-hint">Plot in brief</span>
+        </summary>
+        <div class="section-content">
+          <p>Fowler meets Ausable hoping for an exciting spy adventure, but Ausable looks ordinary and calm. When they return to Ausable’s hotel room, they find <strong>Max</strong> there with a pistol demanding a secret report on missiles. Ausable remains calm, invents a story about a <strong>balcony</strong> outside the window and that the police are expected. When a knock comes at the door, Ausable claims it's the police he called. Panicking, Max attempts to escape via the non-existent balcony and falls to his death. Ausable uses only his wit and presence of mind to win.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Themes</span>
+          <span class="summary-hint">Underlying ideas</span>
+        </summary>
+        <div class="section-content">
+          <ul class="themes-list">
+            <li><strong>Intelligence over Physical Strength</strong> — Wit and presence of mind beat brute force.</li>
+            <li><strong>Appearances vs Reality</strong> — A subtle reminder that real ability doesn't need dramatic looks.</li>
+            <li><strong>Calmness in Danger</strong> — Staying composed helps you outthink an opponent.</li>
+            <li><strong>Deception as a Tool</strong> — Words and imagination are used effectively as weapons.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Important Quotes</span>
+          <span class="summary-hint">Memorable lines</span>
+        </summary>
+        <div class="section-content">
+          <blockquote>
+            “And you thought spies are only in books?” — a line that highlights irony between expectation and reality.
+          </blockquote>
+          <blockquote>
+            “That’s the police. I asked for protection.” — Ausable’s clever trick that triggers Max’s panic.
+          </blockquote>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Word Meanings</span>
+          <span class="summary-hint">Difficult words explained</span>
+        </summary>
+        <div class="section-content">
+          <dl class="word-list">
+            <dt><strong>Accented</strong></dt>
+            <dd>Marked by a foreign way of speaking.</dd>
+
+            <dt><strong>Disillusioned</strong></dt>
+            <dd>Disappointed after expectations are not met.</dd>
+
+            <dt><strong>Balcony</strong></dt>
+            <dd>A small platform outside a building.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Moral / Message</span>
+          <span class="summary-hint">What the story teaches</span>
+        </summary>
+        <div class="section-content">
+          <p><strong>Presence of mind and intelligence</strong> are often more powerful than violence. Overconfidence can lead to a downfall (as seen with Max). The story shows that danger can be handled without violence if you think clearly and act cleverly.</p>
+        </div>
+      </details>
+
+      <footer>
+        <small>Prepared for Class 10 CBSE NCERT — <em>The Midnight Visitor</em> by Robert Arthur</small>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Expand All / Collapse All for <details>
+    document.getElementById('expandAll').addEventListener('click', function(){
+      document.querySelectorAll('main.notes details').forEach(d => d.open = true);
+    });
+    document.getElementById('collapseAll').addEventListener('click', function(){
+      document.querySelectorAll('main.notes details').forEach(d => d.open = false);
+    });
+    document.getElementById('printBtn').addEventListener('click', function(){
+      window.print();
+    });
+
+    // Keyboard accessibility: toggle detail on Enter/Space when focused on summary
+    document.querySelectorAll('summary').forEach(s => {
+      s.tabIndex = 0;
+      s.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const parent = s.parentElement;
+          parent.open = !parent.open;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
