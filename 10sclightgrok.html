@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Light - Reflection & Refraction | Class 10 CBSE Science | Gamified Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --primary: #4e54c8;
+      --secondary: #8f94fb;
+      --success: #00d2a9;
+      --danger: #ff6b6b;
+      --dark: #2d3436;
+      --light: #f8f9fa;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f0f1e;
+      color: #eee;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--gradient);
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,100 Q250,20 500,80 T1000,100 L1000,300 L0,300 Z" fill="%234e54c888"/></svg>') no-repeat bottom;
+      opacity: 0.3;
+    }
+    h1 { font-size: 3.5rem; margin-bottom: 0.5rem; position: relative; }
+    .subtitle { font-size: 1.4rem; opacity: 0.9; }
+    .progress-container {
+      width: 90%; max-width: 800px; margin: 20px auto;
+      background: rgba(255,255,255,0.1);
+      height: 12px; border-radius: 10px; overflow: hidden;
+    }
+    .progress-bar {
+      width: 0%; height: 100%; background: var(--success);
+      transition: width 0.6s ease;
+    }
+    .score { text-align: center; font-size: 1.5rem; margin: 1rem 0; }
+    .coins { color: gold; font-weight: bold; }
+
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 20px; }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-10px); }
+
+    .level-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .formula-box {
+      background: rgba(0,0,0,0.4);
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      margin: 1.5rem 0;
+      border-left: 5px solid var(--success);
+      font-size: 1.4rem;
+    }
+
+    .quick-revise {
+      background: linear-gradient(45deg, #1e3c72, #2a5298);
+      padding: 2rem;
+      border-radius: 20px;
+      margin: 3rem 0;
+    }
+    .quick-revise h2 { text-align: center; margin-bottom: 1.5rem; color: #ffd700; }
+
+    .question {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin: 1.5rem 0;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .question:hover { background: rgba(255,255,255,0.2); }
+    .question::after {
+      content: "👁 Click to reveal answer";
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+    .answer {
+      display: none;
+      background: rgba(0,210,169,0.2);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--success);
+    }
+
+    .animation-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .tab {
+      overflow: hidden;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px 15px 0 0;
+    }
+    .tab button {
+      background: transparent;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 20px;
+      transition: 0.3s;
+      color: white;
+      font-size: 1.1rem;
+    }
+    .tab button:hover { background: rgba(255,255,255,0.2); }
+    .tab button.active { background: var(--primary); }
+    .tabcontent {
+      display: none;
+      padding: 2rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 0 0 15px 15px;
+      animation: fadeEffect 1s;
+    }
+    @keyframes fadeEffect { from {opacity:0;} to {opacity:1;} }
+
+    .mirror-diagram {
+      width: 100%;
+      max-width: 600px;
+      margin: 2rem auto;
+      border: 2px solid var(--secondary);
+      border-radius: 15px;
+    }
+
+    .reward {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      color: #000;
+      padding: 3rem;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      z-index: 1000;
+      display: none;
+      animation: bounce 0.6s;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-20px); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem;
+      background: var(--dark);
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔦 Light – Reflection & Refraction</h1>
+  <p class="subtitle">Class 10 CBSE Science | Fully Interactive & Gamified Notes</p>
+  <div class="score">Level Progress: <span id="progress-text">0%</span> | Coins Earned: <span id="coins" class="coins">0</span> 🪙</div>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Quick Revise Summary -->
+  <div class="quick-revise card">
+    <h2>⚡ One-Glance Revision Summary</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; text-align:center;">
+      <div><strong>Laws of Reflection</strong><br>∠i = ∠r<br>Incident ray, reflected ray, normal in same plane</div>
+      <div><strong>Spherical Mirror Formula</strong><br>\( \frac{1}{v} + \frac{1}{u} = \frac{1}{f} \)</div>
+      <div><strong>Magnification</strong><br>\( m = -\frac{v}{u} = \frac{h_i}{h_o} \)</div>
+      <div><strong>Sign Convention</strong><br>Object distance (u) → Negative<br>Pole → Origin</div>
+      <div><strong>Power of Lens</strong><br>\( P = \frac{1}{f(\text{in metres})} \) Dioptre</div>
+      <div><strong>Lens Formula</strong><br>\( \frac{1}{v} - \frac{1}{u} = \frac{1}{f} \)</div>
+      <div><strong>Snell’s Law</strong><br>\( n = \frac{\sin i}{\sin r} = \frac{c}{v} \)</div>
+      <div><strong>Refractive Index</strong><br>Air ≈ 1, Water = 1.33, Glass ≈ 1.5</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Basics')">Level 1: Basics of Light</button>
+    <button class="tablinks" onclick="openTab(event, 'Reflection')">Level 2: Reflection</button>
+    <button class="tablinks" onclick="openTab(event, 'Mirrors')">Level 3: Spherical Mirrors</button>
+    <button class="tablinks" onclick="openTab(event, 'Refraction')">Level 4: Refraction</button>
+    <button class="tablinks" onclick="openTab(event, 'Lenses')">Level 5: Lenses</button>
+    <button class="tablinks" onclick="openTab(event, 'Questions')">Boss Level: Previous Years Questions</button>
+  </div>
+
+  <!-- Level 1 -->
+  <div id="Basics" class="tabcontent" style="display:block;">
+    <div class="card">
+      <span class="level-badge">Level 1 – Easy</span>
+      <h2>What is Light?</h2>
+      <p>Light is electromagnetic radiation visible to the human eye (400–700 nm). It travels at <strong>3 × 10⁸ m/s</strong> in vacuum.</p>
+      <ul>
+        <li>Rectilinear propagation: Light travels in straight lines</li>
+        <li>Luminous objects: Emit light (Sun, bulb)</li>
+        <li>Non-luminous: Reflect light (Moon, book)</li>
+      </ul>
+
+      <div class="animation-container">
+        <div id="light-ray-animation" style="width:400px; height:250px; margin:0 auto;"></div>
+      </div>
+
+      <div class="formula-box">
+        Speed of light in vacuum, \( c = 3 \times 10^8 \, \text{m/s} \)
+      </div>
+    </div>
+  </div>
+
+  <!-- Level 2 -->
+  <div id="Reflection" class="tabcontent">
+    <div class="card">
+      <span class="level-badge">Level 2 – Reflection of Light</span>
+      <h2>Laws of Reflection</h2>
+      <ol>
+        <li>The angle of incidence = angle of reflection (\( \angle i = \angle r \))</li>
+        <li>Incident ray, reflected ray and normal lie in the same plane</li>
+      </ol>
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Laws_of_reflection.svg" alt="Laws of Reflection" class="mirror-diagram">
+
+      <div class="formula-box">
+        \( \angle i = \angle r \)
+      </div>
+    </div>
+  </div>
+
+  <!-- Level 3 -->
+  <div id="Mirrors" class="tabcontent">
+    <div class="card">
+      <span class="level-badge">Level 3 – Spherical Mirrors</span>
+      <h2>Key Terms</h2>
+      <ul>
+        <li>Pole (P), Centre of curvature (C), Radius of curvature (R), Focus (F)</li>
+        <li>For concave mirror: f = –R/2 (real focus)</li>
+        <li>For convex mirror: f = +R/2 (virtual focus)</li>
+      </ul>
+
+      <div class="formula-box">
+        Mirror Formula: \( \frac{1}{v} + \frac{1}{u} = \frac{1}{f} \)<br>
+        Magnification: \( m = -\frac{v}{u} \)
+      </div>
+
+      <h3>Ray Diagrams (Concave Mirror)</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Concave_mirror_ray_diagram.svg" alt="Concave Mirror Ray Diagram" class="mirror-diagram">
+
+      <h3>Nature of Image (Concave Mirror)</h3>
+      <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+        <tr style="background:var(--primary);"><th>Object Position</th><th>Image Position</th><th>Nature</th><th>Size</th></tr>
+        <tr><td>Beyond C</td><td>Between F and C</td><td>Real, Inverted</td><td>Diminished</td></tr>
+        <tr><td>At C</td><td>At C</td><td>Real, Inverted</td><td>Same size</td></tr>
+        <tr><td>Between C and F</td><td>Beyond C</td><td>Real, Inverted</td><td>Magnified</td></tr>
+        <tr><td>At F</td><td>At infinity</td><td>Real, Inverted</td><td>Highly magnified</td></tr>
+        <tr><td>Between P and F</td><td>Behind mirror</td><td>Virtual, Erect</td><td>Magnified</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Level 4 -->
+  <div id="Refraction" class="tabcontent">
+    <div class="card">
+      <span class="level-badge">Level 4 – Refraction</span>
+      <h2>Refraction of Light</h2>
+      <p>Bending of light when it goes from one medium to another.</p>
+
+      <div class="formula-box">
+        Snell’s Law: \( n_1 \sin i = n_2 \sin r \)<br>
+        Absolute Refractive Index: \( n = \frac{c}{v} \)
+      </div>
+
+      <h3>Refractive Indices</h3>
+      <ul>
+        <li>Vacuum: 1</li>
+        <li>Air: 1.0003 ≈ 1</li>
+        <li>Water: 1.33</li>
+        <li>Glass: 1.50–1.65</li>
+        <li>Diamond: 2.42</li>
+      </ul>
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Refraction_of_light.svg" alt="Refraction" class="mirror-diagram">
+    </div>
+  </div>
+
+  <!-- Level 5 -->
+  <div id="Lenses" class="tabcontent">
+    <div class="card">
+      <span class="level-badge">Level 5 – Lenses</span>
+      <h2>Lens Formula & Power</h2>
+      <div class="formula-box">
+        Lens Formula: \( \frac{1}{v} - \frac{1}{u} = \frac{1}{f} \)<br>
+        Power: \( P = \frac{1}{f(\text{m})} \) (in Dioptre)
+      </div>
+
+      <h3>Sign Convention for Lenses (New Cartesian)</h3>
+      <ul>
+        <li>Object distance u → always negative</li>
+        <li>For convex lens: f → positive</li>
+        <li>For concave lens: f → negative</li>
+      </ul>
+
+      <h3>Image Formation by Convex Lens</h3>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Convex_lens_ray_diagram.svg" alt="Convex Lens" class="mirror-diagram">
+    </div>
+  </div>
+
+  <!-- Boss Level: Previous Year Questions -->
+  <div id="Questions" class="tabcontent">
+    <div class="card">
+      <span class="level-badge">Boss Level – CBSE Board Questions</span>
+      <h2>Previous Years CBSE Questions (with hidden solutions)</h2>
+
+      <div class="question" onclick="this.querySelector('.answer').style.display='block'; earnCoins(10);">
+        <strong>Q1.</strong> A concave mirror produces three times magnified real image of an object placed at 10 cm in front of it. Where is the image located? (2018)
+        <div class="answer">
+          <strong>Answer:</strong> u = –10 cm, m = –3 (real & inverted)<br>
+          m = –v/u ⇒ –3 = –v/(–10) ⇒ v = –30 cm<br>
+          Image is 30 cm in front of the mirror.
+        </div>
+      </div>
+
+      <div class="question" onclick="this.querySelector('.answer').style.display='block'; earnCoins(15);">
+        <strong>Q2.</strong> A convex lens forms a real and inverted image of same size as object at 20 cm from it. Find power of the lens. (2020)
+        <div class="answer">
+          <strong>Answer:</strong> m = –1, v = +20 cm (real image)<br>
+          –1 = –v/u ⇒ u = –20 cm<br>
+          1/f = 1/v – 1/u = 1/20 – 1/(–20) = 1/10<br>
+          f = +10 cm = 0.1 m → P = +10 D
+        </div>
+      </div>
+
+      <div class="question" onclick="this.querySelector('.answer').style.display='block'; earnCoins(20);">
+        <strong>Q3.</strong> The refractive index of diamond is 2.42. What is the meaning of this statement? (2019)
+        <div class="answer">
+          <strong>Answer:</strong> Speed of light in diamond is 1/2.42 times the speed of light in vacuum. i.e., v = c/2.42 ≈ 1.24 × 10⁸ m/s
+        </div>
+      </div>
+
+      <div class="question" onclick="this.querySelector('.answer').style.display='block'; earnCoins(25);">
+        <strong>Q4.</strong> An object is placed at a distance of 30 cm from a concave lens of focal length 15 cm. Find the position and nature of image.
+        <div class="answer">
+          <strong>Answer:</strong> f = –15 cm (concave lens), u = –30 cm<br>
+          1/v – 1/u = 1/f<br>
+          1/v = 1/f + 1/u = –1/15 – 1/30 = –2/30 – 1/30 = –3/30<br>
+          v = –10 cm → Virtual, erect, diminished image at 10 cm from lens on same side as object.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="reward" id="reward">
+  🎉 Congratulations!<br>You earned <span id="reward-coins">0</span> coins!
+  <br><button onclick="document.getElementById('reward').style.display='none'" style="margin-top:1rem;padding:10px 20px;background:#fff;color:#000;border:none;border-radius:10px;cursor:pointer;">Continue</button>
+</div>
+
+<footer>
+  Made with ❤️ for Class 10 CBSE Warriors | Master Light Chapter & Score 100/100
+</footer>
+
+<script>
+  let coins = 0;
+  let progress = 0;
+  const totalLevels = 6;
+
+  function earnCoins(amount) {
+    coins += amount;
+    document.getElementById('coins').textContent = coins;
+    document.getElementById('reward-coins').textContent = amount;
+    document.getElementById('reward').style.display = 'block';
+    setTimeout(() => {
+      if (document.getElementById('reward').style.display === 'block')
+        document.getElementById('reward').style.display = 'none';
+    }, 3000);
+  }
+
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+
+    // Update progress
+    const levelIndex = Array.from(tablinks).indexOf(evt.currentTarget);
+    progress = ((levelIndex + 1) / totalLevels) * 100;
+    document.getElementById("progressBar").style.width = progress + "%";
+    document.getElementById("progress-text").textContent = Math.round(progress) + "%";
+  }
+
+  // Light ray animation (simple Lottie)
+  const animationData = {
+    "v": "5.7.4",
+    "meta": {"g":"LottieFiles"},
+    "fr": 60,
+    "ip": 0,
+    "op": 120,
+    "w": 400,
+    "h": 250,
+    "nm": "Light Ray",
+    "layers": [{
+      "ty": 4,
+      "nm": "Ray",
+      "sr": 1,
+      "ks": {
+        "o": {"a":0,"k":100},
+        "p": {"a":1,"k":[{"i":{"x":0.2,"y":1},"o":{"x":0.8,"y":0},"t":0,"s":[50,125,0],"to":[58.333,0,0],"ti":[-58.333,0,0]},{"t":60,"s":[400,125,0]}]}
+      },
+      "shapes": [{
+        "ty":"sh",
+        "ks":{"a":0,"k":{"i":[[0,-10],[10,0],[0,10],[-10,0]],"o":[[10,0],[0,10],[-10,0],[0,-10]],"v":[[0,0],[100,0],[100,20],[0,20]],"c":true}}
+      },{"ty":"fl","c":{"a":0,"k":[1,0.8,0,1]}},{"ty":"st","w":{"a":0,"k":3},"lc":1,"c":{"a":0,"k":[1,1,0,1]}}]
+    }]
+  };
+  lottie.loadAnimation({
+    container: document.getElementById('light-ray-animation'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    animationData: animationData
+  });
+</script>
+</body>
+</html>
