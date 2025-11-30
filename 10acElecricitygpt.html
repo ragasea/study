@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class 10 Science – Electricity Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    h1, h2 { color: #0066cc; border-bottom: 2px solid #0066cc; padding-bottom: 5px; }
+    ul { margin-left: 20px; }
+    /* Image styling */
+    .diagram { display: block; margin: 10px auto; max-width: 100%; height: auto; border: 1px solid #ccc; }
+    /* Details (toggle) styling for questions */
+    details { background: #eef; margin: 10px 0; padding: 10px; border-radius: 5px; }
+    details summary { cursor: pointer; font-weight: bold; }
+    details div { margin-top: 10px; }
+    /* Responsive tables/lists if needed */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      h2 { font-size: 1.2em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Electricity – Class 10 Notes</h1>
+    <p><strong>Electric circuit:</strong> A closed loop is required for current to flow and power devices. An <em>open</em> circuit breaks the loop, stopping current. A closed circuit completes the path so electrons move and lights/loads work. Electric <strong>current</strong> (I) is the rate of flow of electric charge (Q/t)11, usually via electrons in a conductor. Its SI unit is the ampere (A), equal to one coulomb per second12. Electric <strong>potential difference</strong> (voltage, V) is the work per unit charge to move charge between two points13. It “pushes” charges through the circuit; 1 V = 1 joule per coulomb.</p>
+    <p><strong>Ohm’s Law:</strong> In ohmic materials, current is proportional to voltage14. We write <em>V = I·R</em> (hence <em>I = V/R</em>), where <strong>R</strong> is resistance (Ω). Resistance measures how much a material opposes current; materials with free electrons (metals) have low R, insulators (rubber, glass) have very high R. For a uniform wire of length ℓ and area A, <em>R = ρℓ/A</em>, where ρ is the resistivity of the material15. A longer or thinner wire has higher resistance.</p>
+    <h2>Series and Parallel Circuits</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Series_and_parallel_circuits.svg/2560px-Series_and_parallel_circuits.svg.png" alt="Series and Parallel Circuit Diagram" class="diagram">
+    <p>In a <strong>series</strong> circuit, components are end-to-end in one path. The same current flows through each, and the voltages add. The equivalent resistance is the sum: <em>R<sub>eq</sub>=R₁+R₂+…</em>16. In a <strong>parallel</strong> circuit, components share both connection points. Each branch has the same voltage, and the currents add. The reciprocal of the total resistance is the sum of reciprocals: <em>1/R<sub>eq</sub>=1/R₁+1/R₂+…</em>17. Parallel circuits have lower total R than any branch, allowing more current for a given voltage.</p>
+    <h2>Electric Power</h2>
+    <p>Electric <strong>power</strong> (P) is the rate of energy transfer, given by <em>P = V·I</em>18 (voltage times current). In other forms, <em>P = I²R</em> or <em>P = V²/R</em>. Power is in watts (W), where 1 W = 1 J/s. For example, if 2 A flows through a 5 Ω resistor at 10 V, P = 10×2 = 20 W of power (dissipated as heat). Household appliances (lamps, heaters) are rated in watts, reflecting this heating effect of current.</p>
+    <h2>Practice Questions</h2>
+    <details>
+      <summary>Q1: Why does a bulb glow only when the circuit is closed?</summary>
+      <div><strong>Answer:</strong> A closed circuit completes the path for current. In a closed loop, current flows through the bulb so it lights. In an open circuit the path is broken, so no current reaches the bulb and it stays off.</div>
+    </details>
+    <details>
+      <summary>Q2: State Ohm’s law with its formula.</summary>
+      <div><strong>Answer:</strong> Ohm’s law states that the current (I) through a conductor is directly proportional to the voltage (V) across it (at constant temperature)19. Mathematically: <em>V = I·R</em>, where R is the resistance.</div>
+    </details>
+    <details>
+      <summary>Q3: Calculate the equivalent resistance of a 10 Ω and a 30 Ω resistor in parallel.</summary>
+      <div><strong>Answer:</strong> Use 1/R<sub>eq</sub> = 1/10 + 1/30 = (3+1)/30 = 4/30. So R<sub>eq</sub> = 30/4 = 7.5 Ω.</div>
+    </details>
+    <details>
+      <summary>Q4: A wire has ρ=1.6×10<sup>–8</sup> Ω·m, length 2 m, area 1 mm². Find its resistance.</summary>
+      <div><strong>Answer:</strong> R = ρℓ/A = (1.6×10<sup>–8</sup> Ω·m)(2 m) / (1×10<sup>–6</sup> m²) = 3.2×10<sup>–2</sup> Ω.</div>
+    </details>
+    <h2>Quick Formula Summary</h2>
+    <ul>
+      <li><strong>Current:</strong> I = Q/t (ampere, A = C/s)</li>
+      <li><strong>Voltage:</strong> V = W/Q (volt, V = J/C)</li>
+      <li><strong>Ohm’s Law:</strong> V = I·R</li>
+      <li><strong>Resistance:</strong> R = ρℓ/A</li>
+      <li><strong>Series R:</strong> R<sub>eq</sub> = R₁ + R₂ + …</li>
+      <li><strong>Parallel R:</strong> 1/R<sub>eq</sub> = 1/R₁ + 1/R₂ + …</li>
+      <li><strong>Power:</strong> P = V·I = I²R = V²/R (watt)</li>
+    </ul>
+    <p>*(All sample values and questions above follow the standard CBSE Class 10 pattern.)* Interactive animations (like live circuit simulators) and more elaborate quizzes could be added with JavaScript for a gamified experience. The above code uses simple HTML/CSS for clarity and mobile responsiveness (note the viewport meta tag and fluid widths). For full functionality, images and more scripting could be incorporated.*</p>
+  </div>
+</body>
+</html>
