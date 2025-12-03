@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Notes Organizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .notes-container {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .note-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .note-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .note-header {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .subject-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .chapter-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .note-content {
+            margin: 15px 0;
+        }
+
+        .note-label {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .note-text {
+            color: #444;
+            line-height: 1.6;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .note-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 15px;
+            background: #f0f3ff;
+            border-radius: 8px;
+            transition: all 0.2s;
+            word-break: break-all;
+        }
+
+        .note-link:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: #ff3838;
+            transform: scale(1.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .notes-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Class 10 Notes Organizer</h1>
+        
+        <div class="form-card">
+            <form id="notesForm">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" required placeholder="e.g., Mathematics, Science, English">
+                </div>
+                
+                <div class="form-group">
+                    <label for="chapter">Chapter</label>
+                    <input type="text" id="chapter" required placeholder="e.g., Chapter 1: Real Numbers">
+                </div>
+                
+                <div class="form-group">
+                    <label for="copiedText">Copied Text / Notes</label>
+                    <textarea id="copiedText" required placeholder="Paste your notes here..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notesLink">Notes Link</label>
+                    <input type="url" id="notesLink" placeholder="https://example.com/notes">
+                </div>
+                
+                <button type="submit" class="btn">Add Notes</button>
+            </form>
+        </div>
+
+        <div id="notesDisplay" class="notes-container"></div>
+    </div>
+
+    <script>
+        let notesData = [];
+
+        // Load notes from memory on page load
+        function loadNotes() {
+            const stored = localStorage.getItem('class10Notes');
+            if (stored) {
+                notesData = JSON.parse(stored);
+                displayNotes();
+            }
+        }
+
+        // Save notes to memory
+        function saveNotes() {
+            localStorage.setItem('class10Notes', JSON.stringify(notesData));
+        }
+
+        // Handle form submission
+        document.getElementById('notesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newNote = {
+                id: Date.now(),
+                subject: document.getElementById('subject').value,
+                chapter: document.getElementById('chapter').value,
+                copiedText: document.getElementById('copiedText').value,
+                notesLink: document.getElementById('notesLink').value
+            };
+            
+            notesData.unshift(newNote);
+            saveNotes();
+            displayNotes();
+            
+            // Clear form
+            this.reset();
+            
+            // Show success feedback
+            const btn = this.querySelector('.btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Added Successfully!';
+            btn.style.background = '#2ecc71';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        });
+
+        // Display all notes
+        function displayNotes() {
+            const container = document.getElementById('notesDisplay');
+            
+            if (notesData.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <p>No notes yet. Start adding your study materials!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = notesData.map(note => `
+                <div class="note-card">
+                    <button class="delete-btn" onclick="deleteNote(${note.id})">×</button>
+                    <div class="note-header">
+                        <div class="subject-badge">${note.subject}</div>
+                        <div class="chapter-title">${note.chapter}</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-label">Notes:</div>
+                        <div class="note-text">${note.copiedText.replace(/\n/g, '<br>')}</div>
+                        ${note.notesLink ? `
+                            <div class="note-label">Link:</div>
+                            <a href="${note.notesLink}" target="_blank" class="note-link">
+                                View Resource →
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Delete a note
+        function deleteNote(id) {
+            if (confirm('Are you sure you want to delete this note?')) {
+                notesData = notesData.filter(note => note.id !== id);
+                saveNotes();
+                displayNotes();
+            }
+        }
+
+        // Load notes when page loads
+        loadNotes();
+    </script>
+</body>
+</html>
