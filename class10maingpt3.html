@@ -1,0 +1,1455 @@
+<!-- 
+Prompt: yes do that.
+
+but also there should also form on main page in which I can enter : subject,  chapter and notes link. so that I can add link directly from there, rather than updating html code.
+
+Generated on: 03-12-2025 10:08 AM IST (Asia/Kolkata)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Class 10 Study Hub – All Subjects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2933;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --subject-maths: #22c55e;
+      --subject-science: #38bdf8;
+      --subject-sst: #f97316;
+      --subject-english: #a855f7;
+      --subject-hindi: #facc15;
+      --subject-punjabi: #fb7185;
+      --subject-it: #2dd4bf;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 32px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    header h1 {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(148, 163, 184, 0.12);
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+    }
+
+    /* Subject filter buttons */
+    .subject-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px auto;
+      justify-content: center;
+    }
+
+    .subject-filter-btn {
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.8);
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .subject-filter-btn span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .subject-filter-btn[data-subject="maths"] .dot { background: var(--subject-maths); }
+    .subject-filter-btn[data-subject="science"] .dot { background: var(--subject-science); }
+    .subject-filter-btn[data-subject="sst"] .dot { background: var(--subject-sst); }
+    .subject-filter-btn[data-subject="english"] .dot { background: var(--subject-english); }
+    .subject-filter-btn[data-subject="hindi"] .dot { background: var(--subject-hindi); }
+    .subject-filter-btn[data-subject="punjabi"] .dot { background: var(--subject-punjabi); }
+    .subject-filter-btn[data-subject="it"] .dot { background: var(--subject-it); }
+
+    .subject-filter-btn:hover {
+      background: rgba(31, 41, 55, 0.9);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    }
+
+    .subject-filter-btn.active {
+      border-color: var(--accent);
+      background: rgba(34, 197, 94, 0.1);
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .hint code {
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 2px 6px;
+      border-radius: 999px;
+    }
+
+    /* Link Manager card */
+    .link-manager {
+      margin: 16px 0 18px;
+      padding: 12px 12px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: linear-gradient(135deg, rgba(15,23,42,1), rgba(15,23,42,0.92));
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.8);
+    }
+
+    .link-manager-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .link-manager-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .link-manager-title span.badge {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.6);
+      color: var(--accent);
+    }
+
+    .link-manager-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .link-manager-form {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 720px) {
+      .link-manager-form {
+        grid-template-columns: 0.5fr 1fr 1.2fr auto;
+        align-items: end;
+      }
+    }
+
+    .lm-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lm-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .lm-select,
+    .lm-input {
+      width: 100%;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.9);
+      background: rgba(15,23,42,0.95);
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .lm-select:focus,
+    .lm-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(34,197,94,0.6);
+    }
+
+    .lm-button {
+      margin-top: 16px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #052e16;
+      font-weight: 600;
+      box-shadow: 0 12px 25px rgba(22, 163, 74, 0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .lm-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 16px 30px rgba(22, 163, 74, 0.75);
+    }
+
+    .lm-status {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .lm-status span.ok {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .lm-status span.warn {
+      color: #f97316;
+      font-weight: 500;
+    }
+
+    /* Subject grid */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    @media (min-width: 720px) {
+      .subject-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .subject-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .subject-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .subject-card:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .subject-header {
+      padding: 14px 14px 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      cursor: pointer;
+      gap: 10px;
+    }
+
+    .subject-main {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .subject-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .subject-title-block h2 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .subject-title-block p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .subject-chip {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chevron {
+      transition: transform var(--transition-fast);
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    .subject-card.open .chevron {
+      transform: rotate(90deg);
+    }
+
+    .chapter-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out;
+    }
+
+    .subject-card.open .chapter-list {
+      max-height: 600px;
+      transition: max-height 0.35s ease-in;
+    }
+
+    .chapter-list-inner {
+      padding: 0 14px 12px;
+    }
+
+    .chapter-section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 10px 2px 4px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    ul.chapter-ul {
+      list-style: none;
+      margin-bottom: 4px;
+    }
+
+    .chapter-item {
+      margin: 2px 0;
+    }
+
+    .chapter-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      padding: 5px 8px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .chapter-link span.ch-index {
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+
+    .chapter-link span.ch-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    .chapter-link span.ch-go {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    .chapter-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .chapter-link.linked {
+      border-color: var(--accent);
+      background: rgba(34,197,94,0.12);
+    }
+
+    .chapter-link.linked span.ch-go::after {
+      content: " ✓";
+    }
+
+    /* Notes Viewer */
+    .viewer {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(34,197,94,0.08), rgba(15,23,42,1));
+      box-shadow: 0 18px 32px rgba(15,23,42,0.85);
+    }
+
+    .viewer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .viewer-main-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .viewer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .viewer-tag {
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .viewer-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .viewer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .viewer-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 70px;
+    }
+
+    .viewer-value {
+      font-size: 0.8rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .viewer-status {
+      font-size: 0.78rem;
+      margin-bottom: 6px;
+    }
+
+    .viewer-status span.ok {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .viewer-status span.warn {
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    .viewer-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .viewer-btn {
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: rgba(34,197,94,0.14);
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .viewer-btn.secondary {
+      background: rgba(15,23,42,0.95);
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .viewer-iframe-wrap {
+      margin-top: 4px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: #020617;
+    }
+
+    .viewer-iframe-wrap iframe {
+      width: 100%;
+      height: 260px;
+      border: none;
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="pill-badge">
+        🧠 Class 10 Master Hub · All Subjects
+      </div>
+      <h1>Clickable Notes Dashboard – Class 10</h1>
+      <p>
+        Tap a subject, expand chapters, and either open notes or manage links directly from this page.
+      </p>
+    </header>
+
+    <!-- Subject Filter Buttons -->
+    <div class="subject-filters">
+      <button class="subject-filter-btn active" data-subject="all">
+        <span class="dot" style="background: var(--accent);"></span>
+        All
+      </button>
+      <button class="subject-filter-btn" data-subject="maths">
+        <span class="dot"></span> Maths
+      </button>
+      <button class="subject-filter-btn" data-subject="science">
+        <span class="dot"></span> Science
+      </button>
+      <button class="subject-filter-btn" data-subject="sst">
+        <span class="dot"></span> SST
+      </button>
+      <button class="subject-filter-btn" data-subject="english">
+        <span class="dot"></span> English
+      </button>
+      <button class="subject-filter-btn" data-subject="hindi">
+        <span class="dot"></span> Hindi
+      </button>
+      <button class="subject-filter-btn" data-subject="punjabi">
+        <span class="dot"></span> Punjabi
+      </button>
+      <button class="subject-filter-btn" data-subject="it">
+        <span class="dot"></span> IT (402)
+      </button>
+    </div>
+
+    <!-- Link Manager -->
+    <section class="link-manager">
+      <div class="link-manager-header">
+        <div>
+          <div class="link-manager-title">
+            🔗 Link Manager
+            <span class="badge">No coding needed</span>
+          </div>
+          <div class="link-manager-desc">
+            Choose subject & chapter, paste your ChatGPT / blog / PDF link, and save. The chapter button becomes clickable automatically.
+          </div>
+        </div>
+      </div>
+
+      <form id="linkManagerForm" class="link-manager-form">
+        <div class="lm-field">
+          <label class="lm-label" for="lmSubject">Subject</label>
+          <select id="lmSubject" class="lm-select" required>
+            <option value="">Select subject</option>
+            <option value="maths">Maths</option>
+            <option value="science">Science</option>
+            <option value="sst">SST</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="punjabi">Punjabi</option>
+            <option value="it">IT (402)</option>
+          </select>
+        </div>
+
+        <div class="lm-field">
+          <label class="lm-label" for="lmChapter">Chapter</label>
+          <select id="lmChapter" class="lm-select" required>
+            <option value="">Select chapter</option>
+            <!-- Filled dynamically from chapter buttons -->
+          </select>
+        </div>
+
+        <div class="lm-field">
+          <label class="lm-label" for="lmUrl">Notes link (ChatGPT / blog / PDF)</label>
+          <input
+            id="lmUrl"
+            type="url"
+            class="lm-input"
+            placeholder="https://..."
+            required
+          />
+        </div>
+
+        <button type="submit" class="lm-button">
+          💾 Save / Update Link
+        </button>
+      </form>
+
+      <div id="lmStatus" class="lm-status">
+        ✅ Tip: You only need to set each link once per browser – it’s stored using <code>localStorage</code>.
+      </div>
+    </section>
+
+    <p class="hint">
+      💡 Click any chapter to preview details in the Notes Viewer below. If a link is saved, the pill will get a green border and a ✓ mark.
+    </p>
+
+    <!-- SUBJECT GRID -->
+    <main class="subject-grid">
+
+      <!-- MATHS -->
+      <section class="subject-card" data-subject="maths">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(34,197,94,0.16); border: 1px solid rgba(34,197,94,0.5); color: var(--subject-maths);">
+              ➗
+            </div>
+            <div class="subject-title-block">
+              <h2>Mathematics (Code 041)</h2>
+              <p>NCERT Class 10 Maths – 15 chapters</p>
+            </div>
+          </div>
+          <div class="subject-chip">Board core · CBSE</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">NCERT Chapters</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m1">
+                  <span class="ch-index">1.</span>
+                  <span class="ch-name">Real Numbers</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m2">
+                  <span class="ch-index">2.</span>
+                  <span class="ch-name">Polynomials</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m3">
+                  <span class="ch-index">3.</span>
+                  <span class="ch-name">Pair of Linear Equations in Two Variables</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m4">
+                  <span class="ch-index">4.</span>
+                  <span class="ch-name">Quadratic Equations</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m5">
+                  <span class="ch-index">5.</span>
+                  <span class="ch-name">Arithmetic Progressions</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m6">
+                  <span class="ch-index">6.</span>
+                  <span class="ch-name">Triangles</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m7">
+                  <span class="ch-index">7.</span>
+                  <span class="ch-name">Coordinate Geometry</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m8">
+                  <span class="ch-index">8.</span>
+                  <span class="ch-name">Introduction to Trigonometry</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m9">
+                  <span class="ch-index">9.</span>
+                  <span class="ch-name">Some Applications of Trigonometry</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m10">
+                  <span class="ch-index">10.</span>
+                  <span class="ch-name">Circles</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m11">
+                  <span class="ch-index">11.</span>
+                  <span class="ch-name">Constructions</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m12">
+                  <span class="ch-index">12.</span>
+                  <span class="ch-name">Areas Related to Circles</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m13">
+                  <span class="ch-index">13.</span>
+                  <span class="ch-name">Surface Areas and Volumes</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m14">
+                  <span class="ch-index">14.</span>
+                  <span class="ch-name">Statistics</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="maths" data-chapter-id="m15">
+                  <span class="ch-index">15.</span>
+                  <span class="ch-name">Probability</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCIENCE -->
+      <section class="subject-card" data-subject="science">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(56,189,248,0.16); border: 1px solid rgba(56,189,248,0.5); color: var(--subject-science);">
+              🔬
+            </div>
+            <div class="subject-title-block">
+              <h2>Science</h2>
+              <p>Physics · Chemistry · Biology · Env. Science</p>
+            </div>
+          </div>
+          <div class="subject-chip">16 chapters · NCERT</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">NCERT Chapters</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s1">
+                  <span class="ch-index">1.</span>
+                  <span class="ch-name">Chemical Reactions and Equations</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s2">
+                  <span class="ch-index">2.</span>
+                  <span class="ch-name">Acids, Bases and Salts</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s3">
+                  <span class="ch-index">3.</span>
+                  <span class="ch-name">Metals and Non-metals</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s4">
+                  <span class="ch-index">4.</span>
+                  <span class="ch-name">Carbon and Its Compounds</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s5">
+                  <span class="ch-index">5.</span>
+                  <span class="ch-name">Periodic Classification of Elements</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s6">
+                  <span class="ch-index">6.</span>
+                  <span class="ch-name">Life Processes</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s7">
+                  <span class="ch-index">7.</span>
+                  <span class="ch-name">Control and Coordination</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s8">
+                  <span class="ch-index">8.</span>
+                  <span class="ch-name">How do Organisms Reproduce?</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s9">
+                  <span class="ch-index">9.</span>
+                  <span class="ch-name">Heredity and Evolution</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s10">
+                  <span class="ch-index">10.</span>
+                  <span class="ch-name">Light – Reflection and Refraction</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s11">
+                  <span class="ch-index">11.</span>
+                  <span class="ch-name">Human Eye and the Colourful World</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s12">
+                  <span class="ch-index">12.</span>
+                  <span class="ch-name">Electricity</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s13">
+                  <span class="ch-index">13.</span>
+                  <span class="ch-name">Magnetic Effects of Electric Current</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s14">
+                  <span class="ch-index">14.</span>
+                  <span class="ch-name">Sources of Energy</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s15">
+                  <span class="ch-index">15.</span>
+                  <span class="ch-name">Our Environment</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+              <li class="chapter-item">
+                <a href="#" class="chapter-link" data-subject="science" data-chapter-id="s16">
+                  <span class="ch-index">16.</span>
+                  <span class="ch-name">Management of Natural Resources</span>
+                  <span class="ch-go">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SST -->
+      <section class="subject-card" data-subject="sst">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(249,115,22,0.16); border: 1px solid rgba(249,115,22,0.5); color: var(--subject-sst);">
+              🌍
+            </div>
+            <div class="subject-title-block">
+              <h2>Social Science (SST)</h2>
+              <p>History · Geography · Political Science · Economics</p>
+            </div>
+          </div>
+          <div class="subject-chip">Theory-heavy · Practice writing</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">History – India and the Contemporary World II</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="h1"><span class="ch-index">H1.</span><span class="ch-name">The Rise of Nationalism in Europe</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="h2"><span class="ch-index">H2.</span><span class="ch-name">Nationalism in India</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="h3"><span class="ch-index">H3.</span><span class="ch-name">The Making of a Global World</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="h4"><span class="ch-index">H4.</span><span class="ch-name">The Age of Industrialisation</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="h5"><span class="ch-index">H5.</span><span class="ch-name">Print Culture and the Modern World</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Geography – Contemporary India II</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g1"><span class="ch-index">G1.</span><span class="ch-name">Resources and Development</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g2"><span class="ch-index">G2.</span><span class="ch-name">Forest and Wildlife Resources</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g3"><span class="ch-index">G3.</span><span class="ch-name">Water Resources</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g4"><span class="ch-index">G4.</span><span class="ch-name">Agriculture</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g5"><span class="ch-index">G5.</span><span class="ch-name">Minerals and Energy Resources</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g6"><span class="ch-index">G6.</span><span class="ch-name">Manufacturing Industries</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="g7"><span class="ch-index">G7.</span><span class="ch-name">Lifelines of National Economy</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Political Science – Democratic Politics II</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="p1"><span class="ch-index">P1.</span><span class="ch-name">Power-sharing</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="p2"><span class="ch-index">P2.</span><span class="ch-name">Federalism</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="p3"><span class="ch-index">P3.</span><span class="ch-name">Gender, Religion and Caste</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="p4"><span class="ch-index">P4.</span><span class="ch-name">Political Parties</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="p5"><span class="ch-index">P5.</span><span class="ch-name">Outcomes of Democracy</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Economics – Understanding Economic Development</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="e1"><span class="ch-index">E1.</span><span class="ch-name">Development</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="e2"><span class="ch-index">E2.</span><span class="ch-name">Sectors of the Indian Economy</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="e3"><span class="ch-index">E3.</span><span class="ch-name">Money and Credit</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="e4"><span class="ch-index">E4.</span><span class="ch-name">Globalisation and the Indian Economy</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="sst" data-chapter-id="e5"><span class="ch-index">E5.</span><span class="ch-name">Consumer Rights</span><span class="ch-go">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENGLISH -->
+      <section class="subject-card" data-subject="english">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(168,85,247,0.16); border: 1px solid rgba(168,85,247,0.5); color: var(--subject-english);">
+              📖
+            </div>
+            <div class="subject-title-block">
+              <h2>English</h2>
+              <p>First Flight · Footprints Without Feet</p>
+            </div>
+          </div>
+          <div class="subject-chip">Language · Reading + Writing</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">Prose – First Flight</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff1"><span class="ch-index">FF1.</span><span class="ch-name">A Letter to God</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff2"><span class="ch-index">FF2.</span><span class="ch-name">Nelson Mandela – Long Walk to Freedom</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff3"><span class="ch-index">FF3.</span><span class="ch-name">Two Stories about Flying</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff4"><span class="ch-index">FF4.</span><span class="ch-name">From the Diary of Anne Frank</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff5"><span class="ch-index">FF5.</span><span class="ch-name">The Hundred Dresses – I</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff6"><span class="ch-index">FF6.</span><span class="ch-name">The Hundred Dresses – II</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff7"><span class="ch-index">FF7.</span><span class="ch-name">Glimpses of India</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff8"><span class="ch-index">FF8.</span><span class="ch-name">Mijbil the Otter</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff9"><span class="ch-index">FF9.</span><span class="ch-name">Madam Rides the Bus</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff10"><span class="ch-index">FF10.</span><span class="ch-name">The Sermon at Benares</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="ff11"><span class="ch-index">FF11.</span><span class="ch-name">The Proposal</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Supplementary – Footprints Without Feet</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp1"><span class="ch-index">FP1.</span><span class="ch-name">A Triumph of Surgery</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp2"><span class="ch-index">FP2.</span><span class="ch-name">The Thief’s Story</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp3"><span class="ch-index">FP3.</span><span class="ch-name">The Midnight Visitor</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp4"><span class="ch-index">FP4.</span><span class="ch-name">A Question of Trust</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp5"><span class="ch-index">FP5.</span><span class="ch-name">Footprints without Feet</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp6"><span class="ch-index">FP6.</span><span class="ch-name">The Making of a Scientist</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp7"><span class="ch-index">FP7.</span><span class="ch-name">The Necklace</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp8"><span class="ch-index">FP8.</span><span class="ch-name">The Hack Driver</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp9"><span class="ch-index">FP9.</span><span class="ch-name">Bholi</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="english" data-chapter-id="fp10"><span class="ch-index">FP10.</span><span class="ch-name">The Book that Saved the Earth</span><span class="ch-go">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HINDI -->
+      <section class="subject-card" data-subject="hindi">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(250,204,21,0.16); border: 1px solid rgba(250,204,21,0.7); color: var(--subject-hindi);">
+              📝
+            </div>
+            <div class="subject-title-block">
+              <h2>Hindi</h2>
+              <p>Kshitij · Kritika · (Sparsh / Sanchayan as per school)</p>
+            </div>
+          </div>
+          <div class="subject-chip">Customise chapter names</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">Kshitij भाग – 2 (मुख्य पाठ्यपुस्तक)</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="k1"><span class="ch-index">K1.</span><span class="ch-name">Chapter 1 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="k2"><span class="ch-index">K2.</span><span class="ch-name">Chapter 2 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="k3"><span class="ch-index">K3.</span><span class="ch-name">Chapter 3 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="k4"><span class="ch-index">K4.</span><span class="ch-name">Chapter 4 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="k5"><span class="ch-index">K5.</span><span class="ch-name">Chapter 5 – (edit name)</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Kritika भाग – 2 (पूरक पाठ्यपुस्तक)</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="kr1"><span class="ch-index">KR1.</span><span class="ch-name">Chapter 1 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="kr2"><span class="ch-index">KR2.</span><span class="ch-name">Chapter 2 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="kr3"><span class="ch-index">KR3.</span><span class="ch-name">Chapter 3 – (edit name)</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">(Optional) Sparsh / Sanchayan</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="sp1"><span class="ch-index">SP1.</span><span class="ch-name">Poem / Chapter – 1 (edit)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="sp2"><span class="ch-index">SP2.</span><span class="ch-name">Poem / Chapter – 2 (edit)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="hindi" data-chapter-id="sp3"><span class="ch-index">SP3.</span><span class="ch-name">Poem / Chapter – 3 (edit)</span><span class="ch-go">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PUNJABI -->
+      <section class="subject-card" data-subject="punjabi">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(251,113,133,0.16); border: 1px solid rgba(251,113,133,0.7); color: var(--subject-punjabi);">
+              🪕
+            </div>
+            <div class="subject-title-block">
+              <h2>Punjabi</h2>
+              <p>Customise as per your board / school book</p>
+            </div>
+          </div>
+          <div class="subject-chip">Language · Editable</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">Main Textbook</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="punjabi" data-chapter-id="pb1"><span class="ch-index">P1.</span><span class="ch-name">Chapter 1 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="punjabi" data-chapter-id="pb2"><span class="ch-index">P2.</span><span class="ch-name">Chapter 2 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="punjabi" data-chapter-id="pb3"><span class="ch-index">P3.</span><span class="ch-name">Chapter 3 – (edit name)</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="punjabi" data-chapter-id="pb4"><span class="ch-index">P4.</span><span class="ch-name">Chapter 4 – (edit name)</span><span class="ch-go">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- IT 402 -->
+      <section class="subject-card" data-subject="it">
+        <div class="subject-header">
+          <div class="subject-main">
+            <div class="subject-icon" style="background: rgba(45,212,191,0.16); border: 1px solid rgba(45,212,191,0.7); color: var(--subject-it);">
+              💻
+            </div>
+            <div class="subject-title-block">
+              <h2>Information Technology (402)</h2>
+              <p>Employability + IT Skills (LibreOffice)</p>
+            </div>
+          </div>
+          <div class="subject-chip">Skill subject · CBSE</div>
+          <div class="chevron">▶</div>
+        </div>
+
+        <div class="chapter-list">
+          <div class="chapter-list-inner">
+            <div class="chapter-section-label">Part A – Employability Skills</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="es1"><span class="ch-index">ES1.</span><span class="ch-name">Communication Skills – II</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="es2"><span class="ch-index">ES2.</span><span class="ch-name">Self-Management Skills – II</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="es3"><span class="ch-index">ES3.</span><span class="ch-name">ICT Skills – II</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="es4"><span class="ch-index">ES4.</span><span class="ch-name">Entrepreneurial Skills – II</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="es5"><span class="ch-index">ES5.</span><span class="ch-name">Green Skills – II</span><span class="ch-go">↗</span></a></li>
+            </ul>
+
+            <div class="chapter-section-label">Part B – Subject Specific Skills</div>
+            <ul class="chapter-ul">
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="it1"><span class="ch-index">IT1.</span><span class="ch-name">Digital Documentation (Advanced) – LibreOffice Writer</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="it2"><span class="ch-index">IT2.</span><span class="ch-name">Electronic Spreadsheet (Advanced) – LibreOffice Calc</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="it3"><span class="ch-index">IT3.</span><span class="ch-name">Database Management System – Forms &amp; Reports</span><span class="ch-go">↗</span></a></li>
+              <li class="chapter-item"><a href="#" class="chapter-link" data-subject="it" data-chapter-id="it4"><span class="ch-index">IT4.</span><span class="ch-name">Maintain Healthy, Safe &amp; Secure Working Environment</span><span class="ch-go">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- NOTES VIEWER -->
+    <section class="viewer" id="notesViewer">
+      <div class="viewer-header">
+        <div class="viewer-main-title">
+          🗂️ Notes Viewer
+        </div>
+        <div class="viewer-tags">
+          <span class="viewer-tag" id="viewerSubjectTag">Subject: –</span>
+          <span class="viewer-tag" id="viewerChapterTag">Chapter: –</span>
+        </div>
+      </div>
+
+      <div class="viewer-body" id="viewerBodyText">
+        Click any chapter pill above to see its link status here. If a notes link is saved, you can open it in a new tab and (if allowed) preview it below.
+      </div>
+
+      <div class="viewer-row">
+        <div class="viewer-label">Current link:</div>
+        <div class="viewer-value" id="viewerLinkValue">No chapter selected</div>
+      </div>
+
+      <div class="viewer-status" id="viewerStatusText">
+        ℹ️ No chapter selected yet.
+      </div>
+
+      <div class="viewer-buttons">
+        <a href="#" id="viewerOpenBtn" class="viewer-btn" target="_blank" rel="noopener noreferrer">
+          🔍 Open notes in new tab
+        </a>
+        <button type="button" id="viewerScrollToForm" class="viewer-btn secondary">
+          ✏️ Edit / add link for this chapter
+        </button>
+      </div>
+
+      <div class="viewer-iframe-wrap">
+        <iframe id="viewerIframe" src=""></iframe>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        CBSE &amp; NCERT references (helpful for syllabus cross-check):<br />
+        Maths syllabus PDF – 
+        <a href="https://cbseacademic.nic.in/web_material/CurriculumMain26/Sec/Maths_Sec_2025-26.pdf" target="_blank">
+          https://cbseacademic.nic.in/web_material/CurriculumMain26/Sec/Maths_Sec_2025-26.pdf
+        </a><br />
+        Science syllabus PDF – 
+        <a href="https://cbseacademic.nic.in/web_material/CurriculumMain26/Sec/Science_Sec_2025-26.pdf" target="_blank">
+          https://cbseacademic.nic.in/web_material/CurriculumMain26/Sec/Science_Sec_2025-26.pdf
+        </a><br />
+        Social Science syllabus PDF – 
+        <a href="https://cbseacademic.nic.in/web_material/CurriculumMain25/Sec/Social_Science_Sec_2024-25.pdf" target="_blank">
+          https://cbseacademic.nic.in/web_material/CurriculumMain25/Sec/Social_Science_Sec_2024-25.pdf
+        </a><br />
+        IT (402) syllabus PDF – 
+        <a href="https://cbseacademic.nic.in/web_material/Curriculum25/sec/402-IT-X.pdf" target="_blank">
+          https://cbseacademic.nic.in/web_material/Curriculum25/sec/402-IT-X.pdf
+        </a><br />
+        NCERT ebooks – 
+        <a href="https://ncert.nic.in/textbook.php" target="_blank">
+          https://ncert.nic.in/textbook.php
+        </a>
+      </p>
+      <p style="margin-top: 8px;">
+        📌 All your Class 10 notes, one page, zero stress. 
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Small utility to build storage key
+    function lmKey(subject, chapterId) {
+      return "class10_link_" + subject + "_" + chapterId;
+    }
+
+    // Toggle chapter lists
+    document.querySelectorAll(".subject-header").forEach(function (header) {
+      header.addEventListener("click", function () {
+        const card = header.closest(".subject-card");
+        card.classList.toggle("open");
+      });
+    });
+
+    // Subject filters
+    const filterButtons = document.querySelectorAll(".subject-filter-btn");
+    const subjectCards = document.querySelectorAll(".subject-card");
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const subject = btn.getAttribute("data-subject");
+
+        filterButtons.forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+
+        subjectCards.forEach(function (card) {
+          if (subject === "all" || card.getAttribute("data-subject") === subject) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    const linkManagerForm = document.getElementById("linkManagerForm");
+    const lmSubjectSelect = document.getElementById("lmSubject");
+    const lmChapterSelect = document.getElementById("lmChapter");
+    const lmUrlInput = document.getElementById("lmUrl");
+    const lmStatus = document.getElementById("lmStatus");
+
+    const viewerSubjectTag = document.getElementById("viewerSubjectTag");
+    const viewerChapterTag = document.getElementById("viewerChapterTag");
+    const viewerBodyText = document.getElementById("viewerBodyText");
+    const viewerLinkValue = document.getElementById("viewerLinkValue");
+    const viewerStatusText = document.getElementById("viewerStatusText");
+    const viewerOpenBtn = document.getElementById("viewerOpenBtn");
+    const viewerIframe = document.getElementById("viewerIframe");
+    const viewerScrollToForm = document.getElementById("viewerScrollToForm");
+
+    const chapterLinks = Array.from(document.querySelectorAll(".chapter-link"));
+
+    // Build mapping: subject -> [{ id, name }]
+    const subjectChapters = {};
+    chapterLinks.forEach(function (link) {
+      const subject = link.dataset.subject;
+      const chapterId = link.dataset.chapterId;
+      const chapterName = (link.querySelector(".ch-name") || link).textContent.trim();
+
+      if (!subject || !chapterId) return;
+
+      if (!subjectChapters[subject]) {
+        subjectChapters[subject] = [];
+      }
+      subjectChapters[subject].push({ id: chapterId, name: chapterName });
+    });
+
+    // Sort chapters in each subject by index text to keep order
+    Object.keys(subjectChapters).forEach(function (subject) {
+      subjectChapters[subject].sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+    });
+
+    // Apply stored links from localStorage
+    chapterLinks.forEach(function (link) {
+      const subject = link.dataset.subject;
+      const chapterId = link.dataset.chapterId;
+      if (!subject || !chapterId) return;
+      const key = lmKey(subject, chapterId);
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        link.href = stored;
+        link.classList.add("linked");
+      }
+    });
+
+    // Populate chapter select when subject changes
+    lmSubjectSelect.addEventListener("change", function () {
+      const subject = lmSubjectSelect.value;
+      lmChapterSelect.innerHTML = '<option value="">Select chapter</option>';
+
+      if (!subject || !subjectChapters[subject]) {
+        return;
+      }
+
+      subjectChapters[subject].forEach(function (ch) {
+        const opt = document.createElement("option");
+        opt.value = ch.id;
+        opt.textContent = ch.name;
+        lmChapterSelect.appendChild(opt);
+      });
+    });
+
+    // When chapter is selected, pre-fill URL if already saved
+    lmChapterSelect.addEventListener("change", function () {
+      const subject = lmSubjectSelect.value;
+      const chapterId = lmChapterSelect.value;
+      if (!subject || !chapterId) return;
+
+      const key = lmKey(subject, chapterId);
+      const stored = localStorage.getItem(key);
+      if (stored) {
+        lmUrlInput.value = stored;
+        lmStatus.innerHTML = '✅ Existing link found. Updating will overwrite it.';
+      } else {
+        lmUrlInput.value = "";
+        lmStatus.innerHTML = '✏️ No existing link. Paste a new one and click "Save / Update Link".';
+      }
+    });
+
+    // Handle form submit
+    linkManagerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const subject = lmSubjectSelect.value;
+      const chapterId = lmChapterSelect.value;
+      const url = lmUrlInput.value.trim();
+
+      if (!subject || !chapterId || !url) {
+        lmStatus.innerHTML = '<span class="warn">⚠️ Please select subject, chapter and enter a valid URL.</span>';
+        return;
+      }
+
+      const key = lmKey(subject, chapterId);
+      localStorage.setItem(key, url);
+
+      // Update chapter link in UI
+      const targetLink = document.querySelector('.chapter-link[data-subject="' + subject + '"][data-chapter-id="' + chapterId + '"]');
+      if (targetLink) {
+        targetLink.href = url;
+        targetLink.classList.add("linked");
+      }
+
+      lmStatus.innerHTML = '<span class="ok">✅ Link saved for ' + subject.toUpperCase() + ' – ' + (lmChapterSelect.options[lmChapterSelect.selectedIndex].text || "chapter") + '.</span>';
+    });
+
+    // Notes Viewer – handle chapter click
+    function openInViewer(linkElement) {
+      const subject = linkElement.dataset.subject || "-";
+      const chapterId = linkElement.dataset.chapterId || "-";
+      const chapterName = (linkElement.querySelector(".ch-name") || linkElement).textContent.trim();
+
+      const key = lmKey(subject, chapterId);
+      const stored = localStorage.getItem(key);
+      const effectiveUrl = stored || linkElement.getAttribute("href") || "#";
+
+      viewerSubjectTag.textContent = "Subject: " + subject.toUpperCase();
+      viewerChapterTag.textContent = "Chapter: " + chapterName;
+      viewerBodyText.textContent = "You selected " + chapterName + " from " + subject.toUpperCase() + ". If a link exists, you can open it or preview it below.";
+
+      if (effectiveUrl && effectiveUrl !== "#" && effectiveUrl !== window.location.href + "#") {
+        viewerLinkValue.textContent = effectiveUrl;
+        viewerStatusText.innerHTML = '<span class="ok">✅ Link available.</span> Click "Open notes in new tab". If the site allows embedding, it will also appear in the preview below.';
+        viewerOpenBtn.href = effectiveUrl;
+        viewerOpenBtn.style.pointerEvents = "auto";
+        viewerOpenBtn.style.opacity = "1";
+        viewerIframe.src = effectiveUrl;
+      } else {
+        viewerLinkValue.textContent = "No link saved yet.";
+        viewerStatusText.innerHTML = '<span class="warn">⚠️ No link saved.</span> Use the Link Manager above to attach a notes URL for this chapter.';
+        viewerOpenBtn.href = "#";
+        viewerOpenBtn.style.pointerEvents = "none";
+        viewerOpenBtn.style.opacity = "0.6";
+        viewerIframe.src = "";
+      }
+
+      // Save currently selected to dataset for quick editing
+      viewerOpenBtn.dataset.subject = subject;
+      viewerOpenBtn.dataset.chapterId = chapterId;
+    }
+
+    chapterLinks.forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault(); // We control navigation via viewer
+        openInViewer(link);
+      });
+    });
+
+    // Button to scroll back to form with selected subject/chapter filled
+    viewerScrollToForm.addEventListener("click", function () {
+      const subject = viewerOpenBtn.dataset.subject;
+      const chapterId = viewerOpenBtn.dataset.chapterId;
+      if (subject && lmSubjectSelect.value !== subject) {
+        lmSubjectSelect.value = subject;
+        // Trigger subject change to populate chapters
+        const event = new Event("change");
+        lmSubjectSelect.dispatchEvent(event);
+      }
+      if (chapterId) {
+        lmChapterSelect.value = chapterId;
+        const event2 = new Event("change");
+        lmChapterSelect.dispatchEvent(event2);
+      }
+
+      linkManagerForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
