@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Notes Manager</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338ca;
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Form Styling */
+        .input-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button.btn-add {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.btn-add:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Search Bar Styling (NEW) */
+        .search-wrapper {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-wrapper input {
+            padding-left: 40px;
+            border-radius: 50px; /* Pill shape */
+            border: 2px solid #e5e7eb;
+        }
+
+        .search-wrapper input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* Notes Display Styling */
+        .notes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .note-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            border-left: 5px solid var(--primary);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .subject-tag {
+            background-color: #e0e7ff;
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .note-content {
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .note-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .note-link a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #991b1b;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-light);
+            padding: 40px;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .container { padding: 0 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Class 10 Notebook 📚</h1>
+            <p class="subtitle">Organize your Subject notes & Links</p>
+        </header>
+
+        <div class="input-card">
+            <form id="notesForm">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" placeholder="e.g. Science, Math, IT" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="chapter">Chapter Name/No.</label>
+                    <input type="text" id="chapter" placeholder="e.g. Chapter 1: Chemical Reactions" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="text">Copied Text / Key Points</label>
+                    <textarea id="text" placeholder="Paste important definitions or formulas here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="link">Notes Link (URL)</label>
+                    <input type="url" id="link" placeholder="https://...">
+                </div>
+
+                <button type="submit" class="btn-add">Save Entry 💾</button>
+            </form>
+        </div>
+
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchBox" placeholder="Search subject, chapter or text...">
+        </div>
+
+        <div id="notesContainer" class="notes-list">
+            </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const form = document.getElementById('notesForm');
+        const notesContainer = document.getElementById('notesContainer');
+        const searchBox = document.getElementById('searchBox');
+
+        // 1. Load notes on startup
+        document.addEventListener('DOMContentLoaded', () => renderNotes());
+
+        // 2. Handle Form Submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const note = {
+                id: Date.now(),
+                subject: document.getElementById('subject').value,
+                chapter: document.getElementById('chapter').value,
+                text: document.getElementById('text').value,
+                link: document.getElementById('link').value,
+                date: new Date().toLocaleDateString('en-IN')
+            };
+
+            saveNoteToStorage(note);
+            form.reset();
+        });
+
+        // 3. Search Functionality
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const allNotes = getNotesFromStorage();
+            
+            // Filter notes based on Subject, Chapter, or Text
+            const filteredNotes = allNotes.filter(note => 
+                note.subject.toLowerCase().includes(searchTerm) ||
+                note.chapter.toLowerCase().includes(searchTerm) ||
+                note.text.toLowerCase().includes(searchTerm)
+            );
+
+            renderNotes(filteredNotes);
+        });
+
+        // 4. Save to Storage
+        function saveNoteToStorage(note) {
+            let notes = getNotesFromStorage();
+            notes.push(note);
+            localStorage.setItem('class10_notes', JSON.stringify(notes));
+            
+            // Clear search box to show the new entry immediately
+            searchBox.value = '';
+            renderNotes(); 
+        }
+
+        // 5. Get from Storage
+        function getNotesFromStorage() {
+            const notes = localStorage.getItem('class10_notes');
+            return notes ? JSON.parse(notes) : [];
+        }
+
+        // 6. Render Notes (accepts optional list to support search)
+        function renderNotes(notesList = null) {
+            // If no specific list provided, get all from storage
+            const notes = notesList || getNotesFromStorage();
+            
+            notesContainer.innerHTML = '';
+
+            if (notes.length === 0) {
+                // Different message if searching vs empty database
+                const isSearching = searchBox.value.length > 0;
+                const msg = isSearching ? "No matches found. 🕵️‍♂️" : "No notes added yet. Start studying! 🚀";
+                notesContainer.innerHTML = `<div class="empty-state">${msg}</div>`;
+                return;
+            }
+
+            // Sort by newest first if we are showing the full list
+            // If searching, we usually keep the filtered order, but newest first is still good.
+            // Note: If notesList was passed from search, it's already in the stored order (oldest first).
+            // Let's reverse for display so newest is on top.
+            const displayNotes = [...notes].reverse();
+
+            displayNotes.forEach(note => {
+                const noteElement = document.createElement('div');
+                noteElement.classList.add('note-card');
+
+                const linkHtml = note.link ? 
+                    `<div class="note-link"><a href="${note.link}" target="_blank">🔗 Open Resource Link</a></div>` : '';
+                
+                const textHtml = note.text ? 
+                    `<div class="note-content">${note.text}</div>` : '';
+
+                noteElement.innerHTML = `
+                    <div class="note-header">
+                        <span class="subject-tag">${note.subject}</span>
+                        <span style="font-size:0.8rem; color:#6b7280;">${note.date}</span>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <div class="chapter-title">${note.chapter}</div>
+                    </div>
+                    ${textHtml}
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:10px;">
+                        ${linkHtml}
+                        <button class="btn-delete" onclick="deleteNote(${note.id})">Delete 🗑️</button>
+                    </div>
+                `;
+                notesContainer.appendChild(noteElement);
+            });
+        }
+
+        // 7. Delete Note
+        window.deleteNote = function(id) {
+            if(confirm('Delete this note?')) {
+                let notes = getNotesFromStorage();
+                notes = notes.filter(note => note.id !== id);
+                localStorage.setItem('class10_notes', JSON.stringify(notes));
+                
+                // Refresh view (respecting current search if any)
+                const searchTerm = searchBox.value.toLowerCase();
+                if(searchTerm) {
+                    const filtered = notes.filter(note => 
+                        note.subject.toLowerCase().includes(searchTerm) ||
+                        note.chapter.toLowerCase().includes(searchTerm) ||
+                        note.text.toLowerCase().includes(searchTerm)
+                    );
+                    renderNotes(filtered);
+                } else {
+                    renderNotes();
+                }
+            }
+        };
+    </script>
+</body>
+</html>
