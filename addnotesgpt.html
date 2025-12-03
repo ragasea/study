@@ -1,0 +1,1421 @@
+<!--
+Original user prompt (latest):
+"yes add including for IT subject"
+
+Generated on: 03-12-2025, 10:32 AM (India)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Class 10 Notes Organizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.16);
+      --border-subtle: rgba(148, 163, 184, 0.2);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --shadow-chip: 0 12px 30px rgba(15, 23, 42, 0.7);
+      --transition-fast: 150ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #000 90%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 18px 12px 30px;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 1080px;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 50%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(42px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    .glow-1 {
+      width: 220px;
+      height: 220px;
+      background: rgba(56, 189, 248, 0.3);
+      top: -80px;
+      right: -40px;
+    }
+    .glow-2 {
+      width: 200px;
+      height: 200px;
+      background: rgba(129, 140, 248, 0.3);
+      bottom: -80px;
+      left: -40px;
+    }
+
+    header {
+      padding: 18px 18px 10px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.9)
+      );
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 15px;
+      background: conic-gradient(
+        from 220deg,
+        #38bdf8,
+        #22c55e,
+        #6366f1,
+        #ec4899,
+        #38bdf8
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b1120;
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: var(--shadow-chip);
+    }
+
+    .brand-text-main {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.75)
+      );
+    }
+
+    main {
+      padding: 12px 16px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 860px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 16px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title span.icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 11px;
+      background: radial-gradient(circle at 30% 0, #38bdf8, #1e293b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .card-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 3px 8px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      font-size: 10px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    label span.required {
+      color: #fb7185;
+      font-size: 11px;
+      margin-left: 2px;
+    }
+
+    .row-inline {
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .row-inline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 9px 10px;
+      font-size: 13px;
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background 120ms ease-out, transform 80ms ease-out;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.7);
+    }
+
+    textarea {
+      min-height: 65px;
+      max-height: 220px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-0.5px);
+    }
+
+    .helper {
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .helper strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      padding: 9px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #38bdf8, #22c55e);
+      color: #020617;
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 14px 32px rgba(56, 189, 248, 0.45);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), filter 100ms ease-out;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 18px 36px rgba(56, 189, 248, 0.6);
+      filter: brightness(1.03);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-ghost {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color var(--transition-fast),
+        background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      color: #e5e7eb;
+    }
+
+    .status {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    /* QUICK SUBJECT BUTTONS */
+    .subject-quick-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .subject-quick-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 11px;
+      padding: 4px 9px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background var(--transition-fast),
+        color var(--transition-fast), border-color var(--transition-fast),
+        transform 80ms ease-out;
+    }
+
+    .subject-quick-btn span.icon {
+      font-size: 12px;
+    }
+
+    .subject-quick-btn:hover {
+      background: rgba(15, 23, 42, 1);
+      color: #e5e7eb;
+      border-color: var(--accent);
+      transform: translateY(-0.5px);
+    }
+
+    .subject-quick-btn:active {
+      transform: translateY(0.3px) scale(0.99);
+    }
+
+    /* Entries section (unchanged from previous version) */
+    .entries-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .entries-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .entries-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .entries-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .counter {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-row select,
+    .filter-row input[type="search"] {
+      max-width: 170px;
+      min-width: 0;
+    }
+
+    .filter-row input[type="search"] {
+      padding-right: 24px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: rgba(148, 163, 184, 0.9);
+      pointer-events: none;
+    }
+
+    .entries-list {
+      margin-top: 2px;
+      border-radius: 13px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+      max-height: 70vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .entries-table-head,
+    .entries-row {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr 1.4fr 0.7fr 0.2fr;
+      column-gap: 8px;
+      align-items: flex-start;
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 840px) {
+      .entries-table-head {
+        display: none;
+      }
+      .entries-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .entries-table-head {
+      background: linear-gradient(
+        to right,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.85)
+      );
+      border-bottom: 1px solid rgba(51, 65, 85, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .entries-table-head div {
+      font-weight: 500;
+      color: rgba(148, 163, 184, 0.95);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 10px;
+    }
+
+    .entries-body {
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(100, 116, 139, 0.8) transparent;
+    }
+
+    .entries-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .entries-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .entries-body::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.8);
+      border-radius: 999px;
+    }
+
+    .entries-row {
+      border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+      transition: background var(--transition-fast), transform 120ms ease-out;
+    }
+
+    .entries-row:hover {
+      background: rgba(15, 23, 42, 0.96);
+      transform: translateY(-1px);
+    }
+
+    .entries-row:last-child {
+      border-bottom: none;
+    }
+
+    .col-subject {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .subject-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .subject-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .col-chapter {
+      font-size: 12px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .chapter-small {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .col-text {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.35;
+      max-height: 4.2em;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .col-text::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 1.4em;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(15, 23, 42, 0.95) 55%,
+        rgba(15, 23, 42, 1) 100%
+      );
+    }
+
+    .col-link a {
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .col-link a:hover {
+      text-decoration: underline;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: 10px;
+      gap: 5px;
+      margin-bottom: 3px;
+    }
+
+    .link-chip span.icon {
+      font-size: 12px;
+    }
+
+    .cell-actions {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 5px;
+    }
+
+    .mini-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 10px;
+      padding: 4px 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .mini-btn.danger {
+      border-color: rgba(248, 113, 113, 0.7);
+      color: #fecaca;
+    }
+
+    .mini-btn:hover {
+      background: rgba(15, 23, 42, 1);
+      color: #e5e7eb;
+    }
+
+    .empty-state {
+      padding: 18px 14px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .empty-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.85);
+    }
+
+    .hint {
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    footer {
+      padding: 8px 18px 12px;
+      border-top: 1px solid rgba(30, 64, 175, 0.8);
+      font-size: 10px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: radial-gradient(circle at top, #020617 0, #020617 60%);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-pill span.icon {
+      font-size: 12px;
+    }
+
+    .link-plain {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .link-plain:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .entries-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filter-row {
+        width: 100%;
+      }
+
+      .filter-row select,
+      .filter-row input[type="search"] {
+        max-width: none;
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <header>
+      <div class="brand">
+        <div class="brand-logo">10</div>
+        <div>
+          <div class="brand-text-main">
+            Class 10 Notes Hub
+            <span style="font-size: 18px">📚</span>
+          </div>
+          <div class="brand-text-sub">
+            Quick organiser for subjects, chapters & links
+          </div>
+        </div>
+      </div>
+      <div class="chip">
+        <span>🧠</span>
+        <span>Auto-saved in your browser (no login)</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- FORM CARD -->
+      <section class="card">
+        <div class="card-heading">
+          <div>
+            <div class="card-title">
+              <span class="icon">➕</span>
+              Add / Edit Class 10 Note
+            </div>
+            <div class="card-subtitle">
+              Save subject, chapter, important text & notes link in one place.
+            </div>
+          </div>
+          <span class="pill">
+            <span>💾</span> Local storage backup
+          </span>
+        </div>
+
+        <p class="tagline">
+          Tip: You can paste copied text from NCERT / notes / ChatGPT here for quick reference.
+        </p>
+
+        <form id="notesForm">
+          <input type="hidden" id="entryId" value="" />
+
+          <div class="row-inline">
+            <!-- SUBJECT FIELD WITH QUICK BUTTONS -->
+            <div class="field-group">
+              <label for="subject">
+                <span>Subject</span>
+                <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="e.g. Science, Maths, SST, English, Hindi, IT..."
+                autocomplete="off"
+              />
+              <div class="subject-quick-row" id="subjectQuickRow">
+                <button type="button" class="subject-quick-btn" data-subject="Science">
+                  <span class="icon">🧪</span>
+                  <span>Science</span>
+                </button>
+                <button type="button" class="subject-quick-btn" data-subject="Maths">
+                  <span class="icon">🧮</span>
+                  <span>Maths</span>
+                </button>
+                <button type="button" class="subject-quick-btn" data-subject="SST">
+                  <span class="icon">🌍</span>
+                  <span>SST</span>
+                </button>
+                <button type="button" class="subject-quick-btn" data-subject="English">
+                  <span class="icon">📖</span>
+                  <span>English</span>
+                </button>
+                <button type="button" class="subject-quick-btn" data-subject="Hindi">
+                  <span class="icon">📝</span>
+                  <span>Hindi</span>
+                </button>
+                <button type="button" class="subject-quick-btn" data-subject="IT">
+                  <span class="icon">💻</span>
+                  <span>IT</span>
+                </button>
+              </div>
+              <div class="helper">
+                <span>🔖</span>
+                <span>Tap a subject above or type your own for consistency.</span>
+              </div>
+            </div>
+
+            <!-- CHAPTER FIELD -->
+            <div class="field-group">
+              <label for="chapter">
+                <span>Chapter / Topic</span>
+                <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="chapter"
+                placeholder="e.g. Metals and Non-Metals, Carbon & its Compounds"
+                autocomplete="off"
+              />
+              <div class="helper">
+                <span>📌</span>
+                <span>Add chapter number also, if you like.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="copiedText">
+              <span>Copied Text / Key Points</span>
+            </label>
+            <textarea
+              id="copiedText"
+              placeholder="Paste important definitions, formulae, revision points or your own summary here..."
+            ></textarea>
+            <div class="helper">
+              <span>✂️</span>
+              <span>Short & sharp points work best during revision.</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="notesLink">
+              <span>Notes Link (YouTube / Blog / Drive / ChatGPT etc.)</span>
+            </label>
+            <input
+              type="text"
+              id="notesLink"
+              placeholder="Paste URL here – e.g. https://..."
+              autocomplete="off"
+            />
+            <div class="helper">
+              <span>🔗</span>
+              <span>You can add links to PDFs, videos, or online notes.</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">
+              <span id="submitIcon">💾</span>
+              <span id="submitText">Save Note</span>
+            </button>
+
+            <div style="display: flex; gap: 6px; flex-wrap: wrap">
+              <button
+                type="button"
+                id="clearFormBtn"
+                class="btn-ghost"
+                title="Clear only form fields"
+              >
+                <span>🧽</span>
+                <span>Clear form</span>
+              </button>
+
+              <button
+                type="button"
+                id="clearAllBtn"
+                class="btn-ghost"
+                title="Remove all saved notes from this browser"
+              >
+                <span>🗑️</span>
+                <span>Clear all notes</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            <span id="statusText">Changes are stored locally in this browser.</span>
+          </div>
+        </form>
+      </section>
+
+      <!-- ENTRIES CARD -->
+      <section class="card">
+        <div class="entries-header">
+          <div class="entries-left">
+            <div class="entries-title-row">
+              <h2 class="entries-title">Saved Notes</h2>
+              <span class="counter" id="entriesCounter">
+                <span>📁</span>
+                <span>0 entries</span>
+              </span>
+            </div>
+            <div>
+              <span class="hint">
+                Filter by subject or search chapter/keywords instantly.
+              </span>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <select id="subjectFilter">
+              <option value="">All subjects</option>
+            </select>
+
+            <div class="search-wrapper">
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Search chapter / text..."
+              />
+              <span class="search-icon">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="entries-list" id="entriesList">
+          <div class="entries-table-head">
+            <div>Subject</div>
+            <div>Chapter</div>
+            <div>Copied Text</div>
+            <div>Notes Link</div>
+            <div></div>
+          </div>
+          <div class="entries-body" id="entriesBody">
+            <!-- Rows will be injected here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <span>💡</span>
+        <span>
+          All data is stored only in your browser using <strong>localStorage</strong>.
+        </span>
+      </div>
+      <div class="footer-right">
+        <div class="footer-pill">
+          <span class="icon">📱</span>
+          <span>Optimised for mobile & desktop</span>
+        </div>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-plain"
+        >
+          What is localStorage?
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = "class10NotesEntries_v1";
+
+      const form = document.getElementById("notesForm");
+      const entryIdField = document.getElementById("entryId");
+      const subjectInput = document.getElementById("subject");
+      const chapterInput = document.getElementById("chapter");
+      const copiedTextInput = document.getElementById("copiedText");
+      const notesLinkInput = document.getElementById("notesLink");
+
+      const clearFormBtn = document.getElementById("clearFormBtn");
+      const clearAllBtn = document.getElementById("clearAllBtn");
+      const entriesBody = document.getElementById("entriesBody");
+      const entriesCounter = document.getElementById("entriesCounter");
+      const statusText = document.getElementById("statusText");
+      const subjectFilter = document.getElementById("subjectFilter");
+      const searchInput = document.getElementById("searchInput");
+      const submitText = document.getElementById("submitText");
+      const submitIcon = document.getElementById("submitIcon");
+
+      const subjectQuickRow = document.getElementById("subjectQuickRow");
+
+      let entries = [];
+
+      function loadEntries() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) {
+            entries = [];
+          } else {
+            const parsed = JSON.parse(raw);
+            entries = Array.isArray(parsed) ? parsed : [];
+          }
+        } catch (e) {
+          console.error("Error reading localStorage:", e);
+          entries = [];
+        }
+      }
+
+      function saveEntries() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+          statusText.textContent = "All changes saved locally ✅";
+        } catch (e) {
+          console.error("Error writing localStorage:", e);
+          statusText.textContent =
+            "Could not save! Check storage settings or space ⚠️";
+        }
+      }
+
+      function resetForm() {
+        form.reset();
+        entryIdField.value = "";
+        submitText.textContent = "Save Note";
+        submitIcon.textContent = "💾";
+      }
+
+      function populateSubjectFilter() {
+        const subjects = Array.from(
+          new Set(
+            entries
+              .map((e) => e.subject?.trim())
+              .filter((s) => s && s.length > 0)
+          )
+        ).sort((a, b) => a.localeCompare(b));
+
+        subjectFilter.innerHTML =
+          '<option value="">All subjects</option>' +
+          subjects.map((s) => `<option value="${s}">${s}</option>`).join("");
+      }
+
+      function humanCounter(n) {
+        if (n === 0) return "0 entries";
+        if (n === 1) return "1 entry";
+        return n + " entries";
+      }
+
+      function renderEntries() {
+        const subjectFilterValue = subjectFilter.value.trim().toLowerCase();
+        const searchQuery = searchInput.value.trim().toLowerCase();
+
+        let filtered = entries.slice();
+
+        if (subjectFilterValue) {
+          filtered = filtered.filter(
+            (e) =>
+              (e.subject || "").toLowerCase() === subjectFilterValue
+          );
+        }
+
+        if (searchQuery) {
+          filtered = filtered.filter((e) => {
+            const haystack = (
+              (e.subject || "") +
+              " " +
+              (e.chapter || "") +
+              " " +
+              (e.copiedText || "")
+            )
+              .toLowerCase()
+              .trim();
+            return haystack.includes(searchQuery);
+          });
+        }
+
+        entriesCounter.innerHTML =
+          '<span>📁</span><span>' +
+          humanCounter(filtered.length) +
+          "</span>";
+
+        entriesBody.innerHTML = "";
+
+        if (filtered.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "empty-state";
+          empty.innerHTML = `
+            <div class="empty-badge">
+              <span class="badge-dot"></span>
+              <span>No notes found yet.</span>
+            </div>
+            <div>Add your first Class 10 entry using the form on the left.</div>
+            <div class="hint">
+              Example: <strong>Subject:</strong> Science,
+              <strong>Chapter:</strong> Metals and Non-Metals,
+              add key reactions & a link to your favourite video.
+            </div>
+          `;
+          entriesBody.appendChild(empty);
+          return;
+        }
+
+        filtered.forEach((entry) => {
+          const row = document.createElement("div");
+          row.className = "entries-row";
+
+          const subjectCol = document.createElement("div");
+          subjectCol.className = "col-subject";
+          subjectCol.innerHTML = `
+            <div class="subject-pill">
+              <span class="subject-dot"></span>
+              <span>${entry.subject || "—"}</span>
+            </div>
+          `;
+
+          const chapterCol = document.createElement("div");
+          chapterCol.className = "col-chapter";
+          chapterCol.innerHTML = `
+            <div>${entry.chapter || "—"}</div>
+            <div class="chapter-small">
+              ${entry.createdAtText || ""}
+            </div>
+          `;
+
+          const textCol = document.createElement("div");
+          textCol.className = "col-text";
+          textCol.textContent = entry.copiedText || "";
+
+          const linkCol = document.createElement("div");
+          linkCol.className = "col-link";
+          if (entry.notesLink && entry.notesLink.trim().length > 0) {
+            const safeUrl = entry.notesLink.trim();
+            const shortLabel =
+              safeUrl.length > 38
+                ? safeUrl.slice(0, 35) + "..."
+                : safeUrl;
+            linkCol.innerHTML = `
+              <div class="link-chip">
+                <span class="icon">🔗</span>
+                <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">
+                  Open notes
+                </a>
+              </div>
+              <div>
+                <a href="${safeUrl}" target="_blank" rel="noopener noreferrer">
+                  ${shortLabel}
+                </a>
+              </div>
+            `;
+          } else {
+            linkCol.innerHTML = `<span class="hint">No link added</span>`;
+          }
+
+          const actionsCol = document.createElement("div");
+          actionsCol.className = "cell-actions";
+          actionsCol.innerHTML = `
+            <button class="mini-btn" data-id="${entry.id}" data-action="edit">
+              <span>✏️</span>
+              <span>Edit</span>
+            </button>
+            <button class="mini-btn danger" data-id="${entry.id}" data-action="delete">
+              <span>🗑️</span>
+              <span>Del</span>
+            </button>
+          `;
+
+          row.appendChild(subjectCol);
+          row.appendChild(chapterCol);
+          row.appendChild(textCol);
+          row.appendChild(linkCol);
+          row.appendChild(actionsCol);
+
+          entriesBody.appendChild(row);
+        });
+      }
+
+      function addEntry(entry) {
+        const now = new Date();
+        const dateText =
+          now.toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }) +
+          " • " +
+          now.toLocaleTimeString("en-IN", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+        const newEntry = {
+          id: "id_" + Date.now() + "_" + Math.random().toString(16).slice(2),
+          subject: entry.subject.trim(),
+          chapter: entry.chapter.trim(),
+          copiedText: entry.copiedText.trim(),
+          notesLink: entry.notesLink.trim(),
+          createdAt: now.getTime(),
+          createdAtText: "Added on " + dateText,
+        };
+
+        entries.unshift(newEntry);
+      }
+
+      function updateEntry(id, updated) {
+        const index = entries.findIndex((e) => e.id === id);
+        if (index === -1) return;
+
+        entries[index] = {
+          ...entries[index],
+          subject: updated.subject.trim(),
+          chapter: updated.chapter.trim(),
+          copiedText: updated.copiedText.trim(),
+          notesLink: updated.notesLink.trim(),
+        };
+      }
+
+      function deleteEntry(id) {
+        entries = entries.filter((e) => e.id !== id);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const subject = subjectInput.value.trim();
+        const chapter = chapterInput.value.trim();
+        const copiedText = copiedTextInput.value || "";
+        const notesLink = notesLinkInput.value || "";
+        const currentId = entryIdField.value;
+
+        if (!subject || !chapter) {
+          alert("Please fill in both Subject and Chapter. 😊");
+          return;
+        }
+
+        const payload = { subject, chapter, copiedText, notesLink };
+
+        if (currentId) {
+          updateEntry(currentId, payload);
+          submitText.textContent = "Updated ✅";
+          submitIcon.textContent = "✨";
+          setTimeout(() => {
+            submitText.textContent = "Save Note";
+            submitIcon.textContent = "💾";
+          }, 1500);
+        } else {
+          addEntry(payload);
+          submitText.textContent = "Saved ✅";
+          submitIcon.textContent = "🎉";
+          setTimeout(() => {
+            submitText.textContent = "Save Note";
+            submitIcon.textContent = "💾";
+          }, 1500);
+        }
+
+        saveEntries();
+        populateSubjectFilter();
+        renderEntries();
+        resetForm();
+      });
+
+      clearFormBtn.addEventListener("click", function () {
+        resetForm();
+        statusText.textContent = "Form cleared. Saved notes are still safe 😌";
+      });
+
+      clearAllBtn.addEventListener("click", function () {
+        const ok = confirm(
+          "This will remove ALL saved notes from this browser.\nAre you sure you want to continue?"
+        );
+        if (!ok) return;
+        entries = [];
+        saveEntries();
+        populateSubjectFilter();
+        renderEntries();
+        resetForm();
+        statusText.textContent = "All notes cleared from this browser 🧹";
+      });
+
+      entriesBody.addEventListener("click", function (e) {
+        const button = e.target.closest("button[data-action]");
+        if (!button) return;
+        const id = button.getAttribute("data-id");
+        const action = button.getAttribute("data-action");
+
+        if (action === "delete") {
+          const ok = confirm("Delete this note permanently from this browser?");
+          if (!ok) return;
+          deleteEntry(id);
+          saveEntries();
+          populateSubjectFilter();
+          renderEntries();
+          statusText.textContent = "Note deleted 🗑️";
+        } else if (action === "edit") {
+          const entry = entries.find((e) => e.id === id);
+          if (!entry) return;
+          entryIdField.value = entry.id;
+          subjectInput.value = entry.subject || "";
+          chapterInput.value = entry.chapter || "";
+          copiedTextInput.value = entry.copiedText || "";
+          notesLinkInput.value = entry.notesLink || "";
+          submitText.textContent = "Update Note";
+          submitIcon.textContent = "✏️";
+          statusText.textContent =
+            "Editing existing note. Update and click ‘Update Note’.";
+          subjectInput.focus();
+        }
+      });
+
+      subjectFilter.addEventListener("change", function () {
+        renderEntries();
+      });
+
+      searchInput.addEventListener("input", function () {
+        renderEntries();
+      });
+
+      /* QUICK SUBJECT BUTTONS LOGIC */
+      subjectQuickRow.addEventListener("click", function (e) {
+        const btn = e.target.closest(".subject-quick-btn");
+        if (!btn) return;
+        const value = btn.getAttribute("data-subject") || "";
+        subjectInput.value = value;
+        subjectInput.focus();
+      });
+
+      loadEntries();
+      populateSubjectFilter();
+      renderEntries();
+    })();
+  </script>
+</body>
+</html>
