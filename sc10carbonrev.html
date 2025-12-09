@@ -1,0 +1,356 @@
+<!--
+  Request: Write this in form of web page
+  Date & Time: 2025-12-09 12:28 IST
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon & Its Compounds - Quick Revision</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to enhance readability and visual appeal */
+        .note-card {
+            @apply bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg hover:shadow-xl transition duration-300;
+        }
+        .section-title {
+            @apply text-3xl font-extrabold text-blue-600 dark:text-blue-400 mb-6 border-b-2 border-blue-500 pb-2;
+        }
+        .subsection-title {
+            @apply text-xl font-bold text-gray-800 dark:text-gray-200 mt-4 mb-2;
+        }
+        .formula {
+            @apply font-mono bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 p-1 rounded text-sm;
+        }
+        /* Style for sub/superscripts in formulas */
+        sub, sup {
+            line-height: 0;
+            vertical-align: baseline;
+            position: relative;
+        }
+        sub { bottom: -0.25em; }
+        sup { top: -0.5em; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- HEADER -->
+        <header class="text-center py-8 mb-6 bg-blue-600 rounded-2xl shadow-2xl">
+            <h1 class="text-4xl sm:text-5xl font-black text-white">
+                ⚛️ Carbon & Its Compounds ⚛️
+            </h1>
+            <p class="text-blue-200 mt-2 text-lg">Prashant Kirad's Cheat Notes</p>
+        </header>
+
+        <!-- SECTION 1: CARBON BASICS -->
+        <section class="mb-10">
+            <h2 class="section-title">Carbon: The Element of Life</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="note-card bg-green-50 dark:bg-green-900/50">
+                    <h3 class="font-semibold text-lg text-green-700 dark:text-green-300">Atomic Data</h3>
+                    <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                        <li>Abundance: 15th most in Earth's crust.</li>
+                        <li>Atomic Number: 6</li>
+                        <li>Atomic Mass: 12u</li>
+                        <li>Valency: 4 (Tetravalency)</li>
+                        <li>Electrons (K, L Shells): 2, 4</li>
+                    </ul>
+                </div>
+                <div class="note-card bg-yellow-50 dark:bg-yellow-900/50">
+                    <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-300">Covalent Bonding</h3>
+                    <p class="text-sm mt-2">Chemical bond involving the sharing of electrons to form electron pairs between atoms.</p>
+                    <p class="text-xs mt-2 italic">Types: Single, Double, and Triple Covalent Bonds.</p>
+                </div>
+                <div class="note-card bg-red-50 dark:bg-red-900/50">
+                    <h3 class="font-semibold text-lg text-red-700 dark:text-red-300">Covalent Compound Properties</h3>
+                    <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                        <li>Low melting/boiling points (weak intermolecular forces).</li>
+                        <li>Poor conductors (lack charged particles).</li>
+                        <li>Generally soluble in organic solvents, insoluble in water (except sugar).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ALLOTROPES -->
+        <section class="mb-10">
+            <h2 class="section-title">Allotropes: The Physical Forms</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Diamond -->
+                <div class="note-card bg-gray-100 dark:bg-gray-700">
+                    <h3 class="subsection-title">💎 Diamond</h3>
+                    <p class="text-sm">3D network, each carbon bonds with four others; very hard.</p>
+                    <ul class="list-disc list-inside mt-2 text-xs">
+                        <li>Highly stable (four strong covalent bonds).</li>
+                        <li>Uses: Jewelry, abrasives.</li>
+                    </ul>
+                </div>
+                <!-- Graphite -->
+                <div class="note-card bg-gray-100 dark:bg-gray-700">
+                    <h3 class="subsection-title">✏️ Graphite</h3>
+                    <p class="text-sm">Layers of hexagons held by weak forces; soft and slippery.</p>
+                    <ul class="list-disc list-inside mt-2 text-xs">
+                        <li>Three covalent bonds + delocalized electrons (conducts electricity).</li>
+                        <li>Uses: Pencils, lubricants.</li>
+                    </ul>
+                </div>
+                <!-- Fullerene -->
+                <div class="note-card bg-gray-100 dark:bg-gray-700">
+                    <h3 class="subsection-title">⚽ Fullerene (<span class="formula">C<sub>60</sub></span>)</h3>
+                    <p class="text-sm">Hollow, cage-like structure (soccer ball shape).</p>
+                    <ul class="list-disc list-inside mt-2 text-xs">
+                        <li>Strong covalent bonds in hexagons and pentagons.</li>
+                        <li>Uses: Nanotech, drugs (unique electronic properties).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: HYDROCARBONS & BONDING -->
+        <section class="mb-10">
+            <h2 class="section-title">Hydrocarbons & Special Properties</h2>
+
+            <div class="note-card mb-6">
+                <h3 class="subsection-title">Chain Classification (Hydrocarbons)</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Type</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Bond</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Formula</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Chain Type</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-medium text-green-600">Alkanes</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Single</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">C<sub>n</sub>H<sub>2n+2</sub></td>
+                                <td class="px-3 py-2 whitespace-nowrap">Saturated (Aliphatic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-medium text-yellow-600">Alkenes</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Double</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">C<sub>n</sub>H<sub>2n</sub></td>
+                                <td class="px-3 py-2 whitespace-nowrap">Unsaturated (Aliphatic)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-medium text-red-600">Alkynes</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Triple</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">C<sub>n</sub>H<sub>2n-2</sub></td>
+                                <td class="px-3 py-2 whitespace-nowrap">Unsaturated (Aliphatic)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs mt-3 italic">Also: Aromatic Hydrocarbons, Straight, Branched, and Cyclic Hydrocarbons (e.g., Cyclohexane <span class="formula">C<sub>6</sub>H<sub>12</sub></span>, Benzene <span class="formula">C<sub>6</sub>H<sub>6</sub></span>)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Key Properties Card -->
+                <div class="note-card">
+                    <h3 class="subsection-title">The Four Powers of Carbon</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>**Catenation:** Forms strong covalent bonds with itself (chains, branches, rings).</li>
+                        <li>**Tetravalency:** Forms four covalent bonds for stability and diverse compounds.</li>
+                        <li>**Isomerism:** Compounds with the same molecular formula but different structures.</li>
+                        <li>**Polymerisation:** Small molecules (monomers) join to form large molecules (polymers).</li>
+                    </ul>
+                </div>
+                <!-- Homologous Series Card -->
+                <div class="note-card">
+                    <h3 class="subsection-title">Homologous Series</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>Same general formula.</li>
+                        <li>Differ by a <span class="formula">-CH<sub>2</sub></span> group.</li>
+                        <li>Molecular mass difference is 14 μ.</li>
+                        <li>Similar chemical properties, gradual change in physical properties.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FUNCTIONAL GROUPS -->
+        <section class="mb-10">
+            <h2 class="section-title">Functional Groups & IUPAC Naming</h2>
+            <div class="note-card">
+                <p class="text-sm mb-3">Heteroatoms (Cl, S, N, O) replace Hydrogen atoms, forming functional groups that determine chemical reactivity.</p>
+                <h4 class="font-semibold mt-4 text-orange-500">Priority Order (Highest to Lowest):</h4>
+                <p class="formula text-base mt-1 mb-4">
+                    -COOH &gt; -CHO &gt; -CO- &gt; -OH &gt; -NH<sub>2</sub>
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 dark:bg-gray-800">
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Group Name</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Formula</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">IUPAC Suffix/Prefix</th>
+                                <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap">Alcohol</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">-OH</td>
+                                <td class="px-3 py-2 whitespace-nowrap">-ol</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Ethanol</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap">Aldehyde</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">-CHO</td>
+                                <td class="px-3 py-2 whitespace-nowrap">-al</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Ethanal</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap">Ketone</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">-CO-</td>
+                                <td class="px-3 py-2 whitespace-nowrap">-one</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Propanone</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap">Carboxylic Acid</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">-COOH</td>
+                                <td class="px-3 py-2 whitespace-nowrap">-oic acid</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Ethanoic acid</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap">Amine</td>
+                                <td class="px-3 py-2 whitespace-nowrap formula">-NH<sub>2</sub></td>
+                                <td class="px-3 py-2 whitespace-nowrap">-amine or Amino-</td>
+                                <td class="px-3 py-2 whitespace-nowrap">Aminoethane</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CHEMICAL PROPERTIES -->
+        <section class="mb-10">
+            <h2 class="section-title">Key Chemical Reactions</h2>
+            <div class="space-y-4">
+                <div class="note-card">
+                    <h3 class="subsection-title">🔥 Combustion (Burning)</h3>
+                    <p class="text-sm">Carbon compounds burn in <span class="formula">O<sub>2</sub></span> to form <span class="formula">CO<sub>2</sub></span>, <span class="formula">H<sub>2</sub>O</span>, and heat.</p>
+                    <p class="formula mt-2 text-sm">CH<sub>4</sub> + 2O<sub>2</sub> &rarr; CO<sub>2</sub> + 2H<sub>2</sub>O + Heat</p>
+                </div>
+                <div class="note-card">
+                    <h3 class="subsection-title">🧪 Oxidation</h3>
+                    <p class="text-sm">Alcohols are oxidized to acids using oxidizing agents like <span class="formula">KMnO<sub>4</sub></span> or <span class="formula">K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></span>.</p>
+                    <p class="formula mt-2 text-sm">CH<sub>3</sub>CH<sub>2</sub>OH + [O] &rarr; CH<sub>3</sub>COOH</p>
+                </div>
+                <div class="note-card">
+                    <h3 class="subsection-title">➕ Addition Reaction (Hydrogenation)</h3>
+                    <p class="text-sm">Unsaturated hydrocarbons (alkenes, alkynes) add <span class="formula">H<sub>2</sub></span> in the presence of Ni/Pd catalyst (converting oils to solid fats).</p>
+                    <p class="formula mt-2 text-sm">CH<sub>2</sub>=CH<sub>2</sub> + H<sub>2</sub> &rarr; CH<sub>3</sub>-CH<sub>3</sub></p>
+                </div>
+                <div class="note-card">
+                    <h3 class="subsection-title">🔄 Substitution Reaction</h3>
+                    <p class="text-sm">Alkanes react with halogens (<span class="formula">Cl<sub>2</sub></span>, <span class="formula">Br<sub>2</sub></span>) in the presence of sunlight.</p>
+                    <p class="formula mt-2 text-sm">CH<sub>4</sub> + Cl<sub>2</sub> <span class="italic text-gray-600 dark:text-gray-400">&nbsp;(&#x2192; Sunlight)</span> CH<sub>3</sub>Cl + HCl</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ETHANOL AND ETHANOIC ACID -->
+        <section class="mb-10">
+            <h2 class="section-title">The Star Compounds</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Ethanol -->
+                <div class="note-card border-l-4 border-purple-500">
+                    <h3 class="subsection-title text-purple-600 dark:text-purple-400">Ethanol (<span class="formula">C<sub>2</sub>H<sub>5</sub>OH</span>)</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>Active ingredient in alcoholic drinks; liquid at room temperature; good solvent.</li>
+                        <li>**Denatured Alcohol:** Ethanol mixed with poisonous chemicals (like methanol) to make it unfit for drinking (used in industry).</li>
+                        <li>**Rx with Sodium:** <span class="formula">2Na + 2C<sub>2</sub>H<sub>5</sub>OH &rarr; 2C<sub>2</sub>H<sub>5</sub>O<sup>-</sup>Na<sup>+</sup> + H<sub>2</sub></span> (Produces Hydrogen gas)</li>
+                        <li>**Dehydration:** Heated with hot conc. <span class="formula">H<sub>2</sub>SO<sub>4</sub></span> at 443 K (Dehydrating Agent) to form Ethene (<span class="formula">C<sub>2</sub>H<sub>5</sub>OH &rarr; CH<sub>2</sub>=CH<sub>2</sub> + H<sub>2</sub>O</span>).</li>
+                    </ul>
+                </div>
+
+                <!-- Ethanoic Acid -->
+                <div class="note-card border-l-4 border-teal-500">
+                    <h3 class="subsection-title text-teal-600 dark:text-teal-400">Ethanoic Acid (<span class="formula">CH<sub>3</sub>COOH</span>)</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>Commonly Acetic Acid; 5-8% solution in water is **Vinegar** (preservative).</li>
+                        <li>**Glacial Acetic Acid:** Freezes in winter (Melting point: 290 K).</li>
+                        <li>**Esterification:** Reacts with Ethanol (conc. <span class="formula">H<sub>2</sub>SO<sub>4</sub></span>) to form sweet-smelling **Ester** (used in perfumes).</li>
+                        <li>**Rx with Bases:** <span class="formula">CH<sub>3</sub>COOH + NaOH &rarr; CH<sub>3</sub>COONa + H<sub>2</sub>O</span></li>
+                        <li>**Rx with Carbonates/Hydrogencarbonates:** Produces <span class="formula">CO<sub>2</sub></span>, water, and Sodium Acetate.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: SOAPS & WATER -->
+        <section class="mb-10">
+            <h2 class="section-title">🧼 Soaps, Detergents & Water</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Cleansing Mechanism -->
+                <div class="note-card border-l-4 border-indigo-500">
+                    <h3 class="subsection-title">Micelle Formation (The Cleansing Process)</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>Soap molecule has a **Hydrophilic Head** (Water-attracting, polar) and a **Hydrophobic Tail** (Oil/Dirt-attracting, non-polar).</li>
+                        <li>The hydrophobic tails attach to the dirt/grease.</li>
+                        <li>Molecules arrange themselves in a spherical **Micelle** structure, trapping the dirt inside.</li>
+                        <li>When rinsed, the water-attracting heads carry the micelles (with the trapped dirt) away.</li>
+                    </ul>
+                </div>
+                <!-- Hard vs Soft Water -->
+                <div class="note-card border-l-4 border-pink-500">
+                    <h3 class="subsection-title">Hard Water vs. Soft Water</h3>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li>**Hard Water:** High mineral content (<span class="formula">Ca<sup>2+</sup></span>, <span class="formula">Mg<sup>2+</sup></span>). Forms **scum** and **scale** and does not lather easily with soap.</li>
+                        <li>**Soft Water:** Low mineral content (<span class="formula">Na<sup>+</sup></span>, <span class="formula">K<sup>+</sup></span>). Lathers easily; feels smooth on skin and hair.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-card mt-6">
+                <h3 class="subsection-title">Soap vs. Detergent</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-semibold w-1/3 text-blue-500">Composition</td>
+                                <td class="px-3 py-2">Sodium/potassium salts of long-chain carboxylic acids.</td>
+                                <td class="px-3 py-2">Sodium salts of sulphonic acids or ammonium salts with chloride/bromide.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-semibold w-1/3 text-blue-500">Hard Water</td>
+                                <td class="px-3 py-2 text-red-400">Not very effective (forms scum).</td>
+                                <td class="px-3 py-2 text-green-400">Effective even in hard water.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-semibold w-1/3 text-blue-500">Cleansing Action</td>
+                                <td class="px-3 py-2">Relatively weak.</td>
+                                <td class="px-3 py-2">Strong.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 whitespace-nowrap font-semibold w-1/3 text-blue-500">Biodegradability</td>
+                                <td class="px-3 py-2 text-green-400">Biodegradable.</td>
+                                <td class="px-3 py-2 text-red-400">Most are non-biodegradable.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center mt-10 pt-4 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400">
+            <p>Chapter ka KHAZANA: IUPAC, Important Reactions (Esterification, Saponification), Working of Soap.</p>
+            <p class="mt-2 text-xs">&copy; 2025 Revision Notes. All rights reserved.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
+
