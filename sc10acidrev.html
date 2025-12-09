@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acids, Bases & Salts | Cheat Notes 🧪</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --acid-color: #ff7675;
+            --base-color: #74b9ff;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+        }
+
+        [data-theme="dark"] {
+            --primary: #a29bfe;
+            --card-bg: #2d3436;
+            --text-color: #dfe6e9;
+            --light: #1e272e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 10px; }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary);
+        }
+
+        h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 10px; }
+        h3 { color: var(--secondary); margin-top: 20px; }
+
+        /* Comparison Table */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+
+        .acid-box { border: 2px solid var(--acid-color); padding: 15px; border-radius: 10px; }
+        .base-box { border: 2px solid var(--base-color); padding: 15px; border-radius: 10px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: rgba(108, 92, 231, 0.1); }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .reaction-box {
+            background: rgba(0, 206, 201, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .khazaana {
+            background: linear-gradient(45deg, #FFC312, #F79F1F);
+            color: white;
+            text-align: center;
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+            background: var(--dark);
+            color: white;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .author-credit {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #636e72;
+        }
+    </style>
+</head>
+<body>
+
+<button class="toggle-btn" onclick="toggleTheme()">🌙 Night Mode</button>
+
+<header>
+    <h1>🧪 Acids, Bases & Salts</h1>
+    <div class="subtitle">Class 10 Cheat Notes | Prashant Kirad Edition</div>
+    <p style="margin-top: 10px;"><em>"Chemistry is like cooking, just don't lick the spoon."</em> 🥄</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>1. The Showdown: Acids vs. Bases</h2>
+        <div class="comparison-grid">
+            <div class="acid-box">
+                <h3 style="color: var(--acid-color);">🍋 ACIDS</h3>
+                <ul>
+                    <li><strong>Taste:</strong> Sour (think lemons/tamarind).</li>
+                    <li><strong>Litmus:</strong> Turns Blue Litmus → <strong>RED</strong>.</li>
+                    <li><strong>Ions:</strong> Gives H⁺ ions in solution.</li>
+                    <li><strong>pH:</strong> Less than 7.</li>
+                    <li><strong>Examples:</strong> HCl, H₂SO₄, Acetic Acid (Vinegar).</li>
+                </ul>
+            </div>
+            <div class="base-box">
+                <h3 style="color: var(--base-color);">🧼 BASES</h3>
+                <ul>
+                    <li><strong>Taste:</strong> Bitter & soapy to touch.</li>
+                    <li><strong>Litmus:</strong> Turns Red Litmus → <strong>BLUE</strong>.</li>
+                    <li><strong>Ions:</strong> Gives OH⁻ (hydroxyl) ions.</li>
+                    <li><strong>pH:</strong> Greater than 7.</li>
+                    <li><strong>Examples:</strong> NaOH (Sodium Hydroxide), Ca(OH)₂.</li>
+                </ul>
+            </div>
+        </div>
+        <p><strong>Note on Dilution:</strong> Always add acid to water, not water to acid! (Unless you want a mini explosion 💥).</p>
+    </div>
+
+    <div class="card">
+        <h2>2. Indicators: The Color Changers 🎨</h2>
+        <p><strong>Litmus Solution:</strong> A purple dye from Lichen.</p>
+        
+        <h3>Natural vs. Synthetic Indicators</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>Neutral Color</th>
+                    <th>In Acid</th>
+                    <th>In Base</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Litmus</td>
+                    <td>Purple</td>
+                    <td>🔴 Red</td>
+                    <td>🔵 Blue</td>
+                </tr>
+                <tr>
+                    <td>Turmeric (Haldi)</td>
+                    <td>Yellow</td>
+                    <td>🟡 Yellow</td>
+                    <td>🔴 Red (like soap on curry stain)</td>
+                </tr>
+                <tr>
+                    <td>Phenolphthalein</td>
+                    <td>-</td>
+                    <td>⚪ Colorless</td>
+                    <td>🌸 Pink</td>
+                </tr>
+                <tr>
+                    <td>Methyl Orange</td>
+                    <td>-</td>
+                    <td>🔴 Red</td>
+                    <td>🟡 Yellow</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>👃 Olfactory Indicators</h3>
+        <p>Substances whose <strong>smell</strong> changes in acidic/basic media.</p>
+        <ul>
+            <li><strong>Vanilla/Onion/Clove Oil:</strong> Smell remains in Acid, Smell vanishes in Base.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>3. Chemical Reactions (The Serious Stuff) ⚗️</h2>
+        
+        <h3>A. Acid + Metal</h3>
+        <div class="reaction-box">
+            Acid + Metal → Salt + Hydrogen Gas (H₂)<br>
+            <span class="formula">Zn + 2HCl → ZnCl₂ + H₂</span>
+        </div>
+        <p><em>Pop Test:</em> H₂ gas burns with a "pop" sound 🍿.</p>
+
+        <h3>B. Acid + Metal Carbonate</h3>
+        <div class="reaction-box">
+            Acid + Carbonate → Salt + CO₂ + Water<br>
+            <span class="formula">Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂</span>
+        </div>
+        <p><em>Lime Water Test:</em> CO₂ turns lime water milky.</p>
+
+        <h3>C. Neutralization</h3>
+        <div class="reaction-box">
+            Acid + Base → Salt + Water<br>
+            <span class="formula">HCl + NaOH → NaCl + H₂O</span>
+        </div>
+        <p><em>Fun Fact:</em> This is why we take antacids (base) when we have acidity!</p>
+    </div>
+
+    <div class="card">
+        <h2>4. pH in Daily Life 🌍</h2>
+        <ul>
+            <li><strong>Stomach:</strong> Uses HCl (pH 1-3) for digestion. Too much = Acidity.</li>
+            <li><strong>Teeth:</strong> Decay starts when mouth pH < 5.5. Toothpaste is basic to neutralize it. 🦷</li>
+            <li><strong>Soil:</strong> Plants prefer pH 6.3 - 7.3. Use Lime for acidic soil, Gypsum for basic.</li>
+            <li><strong>Bee Sting:</strong> Methanoic acid causing pain? Apply baking soda! 🐝</li>
+        </ul>
+        <div style="background: #eee; padding: 10px; border-radius: 5px; text-align: center; margin-top: 10px;">
+            <strong>Universal Indicator:</strong> Shows strength of acid/base.<br>
+            Red (Strong Acid) ↔️ Green (Neutral) ↔️ Violet (Strong Base)
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>5. Important Chemical Compounds (The VIPs) 🏆</h2>
+        
+        <h3>🌊 1. Sodium Hydroxide (NaOH) - Chlor-Alkali Process</h3>
+        <p><strong>Process:</strong> Electrolysis of Brine (Salt water).</p>
+        <div class="reaction-box">2NaCl + 2H₂O → 2NaOH + Cl₂ + H₂</div>
+        <ul>
+            <li><strong>Anode (+):</strong> Cl₂ gas (Water treatment, PVC).</li>
+            <li><strong>Cathode (-):</strong> H₂ gas (Fuels).</li>
+            <li><strong>Near Cathode:</strong> NaOH (Soaps, Paper).</li>
+        </ul>
+
+        <h3>🍞 2. Baking Soda (Sodium Hydrogen Carbonate)</h3>
+        <p><strong>Formula:</strong> <span class="formula">NaHCO₃</span></p>
+        <p><strong>Uses:</strong> Making crispy pakoras (yum!), antacids, fire extinguishers.</p>
+        <div class="reaction-box">Heated: 2NaHCO₃ → Na₂CO₃ + H₂O + CO₂</div>
+
+        <h3>👕 3. Washing Soda</h3>
+        <p><strong>Formula:</strong> <span class="formula">Na₂CO₃ · 10H₂O</span></p>
+        <p><strong>Uses:</strong> Glass, soap, paper industries, removing permanent hardness of water.</p>
+
+        <h3>🚿 4. Bleaching Powder</h3>
+        <p><strong>Formula:</strong> <span class="formula">CaOCl₂</span> (Calcium Oxychloride)</p>
+        <div class="reaction-box">Ca(OH)₂ + Cl₂ → CaOCl₂ + H₂O</div>
+        <p><strong>Uses:</strong> Bleaching cotton/linen, disinfecting drinking water.</p>
+
+        <h3>🦴 5. Plaster of Paris (POP)</h3>
+        <p><strong>Formula:</strong> <span class="formula">CaSO₄ · ½H₂O</span></p>
+        <p><strong>Made by:</strong> Heating Gypsum (CaSO₄ · 2H₂O) at 373K.</p>
+        <p><strong>Reaction:</strong> <span class="formula">CaSO₄ · ½H₂O + 1½H₂O → CaSO₄ · 2H₂O (Gypsum - Hard Mass)</span></p>
+        <p><strong>Uses:</strong> Supporting fractured bones, toys, decoration.</p>
+    </div>
+
+    <div class="card">
+        <h2>6. Are Crystals Really Dry? 💎</h2>
+        <p>No! They contain fixed water molecules called <strong>Water of Crystallization</strong>.</p>
+        <ul>
+            <li><strong>Copper Sulphate:</strong> <span class="formula">CuSO₄ · 5H₂O</span> (Blue color).</li>
+            <li><strong>Heating it:</strong> Loses water → Becomes White.</li>
+            <li><strong>Adding water:</strong> Turns Blue again. 🔵</li>
+        </ul>
+    </div>
+
+    <div class="card khazaana">
+        <h2>🏆 Chapter ka KHAZAANA (Top Exam Topics)</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li>⭐ Indicators & pH Scale</li>
+            <li>⭐ Chlor-Alkali Process</li>
+            <li>⭐ POP, Washing Soda & Specially <strong>Baking Soda</strong></li>
+        </ul>
+    </div>
+
+    <div class="author-credit">
+        <p>Based on notes by <strong>Prashant Kirad</strong></p>
+        <p>For more educational resources, visit <a href="https://ncert.nic.in/" target="_blank">NCERT Official</a> or <a href="https://www.khanacademy.org/science/chemistry" target="_blank">Khan Academy Chemistry</a>.</p>
+    </div>
+
+</div>
+
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const button = document.querySelector('.toggle-btn');
+        if (body.getAttribute('data-theme') === 'dark') {
+            body.removeAttribute('data-theme');
+            button.innerText = "🌙 Night Mode";
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            button.innerText = "☀️ Day Mode";
+        }
+    }
+</script>
+
+</body>
+</html>
